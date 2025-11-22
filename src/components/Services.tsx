@@ -22,36 +22,42 @@ export default function Services() {
       title: "Ship Technical Support",
       description:
         "Expert on-site technical support for machinery troubleshooting, maintenance, and repairs. Our marine engineers provide professional assistance for all vessel types.",
+      link: "/services/ship-technical-support",
     },
     {
       icon: FileSearch,
       title: "Engineering Inspections",
       description:
         "Thorough technical inspections and precision measurements for marine engines and equipment. Comprehensive reporting and recommendations for optimal performance.",
+      link: "/services/engineering-inspections",
     },
     {
       icon: Zap,
       title: "Emergency Deliveries – Suez Canal",
       description:
         "24/7 emergency spare parts delivery to vessels transiting the Suez Canal. Strategic location enables rapid response for urgent maritime needs.",
+      link: "/services/emergency-deliveries",
     },
     {
       icon: Globe,
       title: "Import & Export Services",
       description:
         "Streamlined import and export of marine equipment, spare parts, and technical supplies. Full logistics coordination and customs clearance support.",
+      link: "/services/import-export",
     },
     {
       icon: Settings,
       title: "Marine Equipment Sourcing",
       description:
         "Global network for sourcing specialized marine equipment from verified suppliers. Quality control and competitive pricing for all maritime requirements.",
+      link: "/services/marine-equipment-sourcing",
     },
     {
       icon: Factory,
       title: "Future: Local Manufacturing Solutions",
       description:
         "Developing local manufacturing capabilities for marine components and parts. Innovation-driven approach to serve the regional maritime industry.",
+      link: "/services/local-manufacturing",
     },
   ];
 

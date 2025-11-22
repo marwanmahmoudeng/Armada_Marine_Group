@@ -1,27 +1,28 @@
 import { useNavigate } from "react-router-dom";
 import {
-  Package,
   Wrench,
   Settings,
-  Droplet,
   Activity,
-  Zap,
-  Search,
-  ShoppingCart,
+  AlertCircle,
   ClipboardCheck,
-  Truck,
+  Zap,
   Phone,
   Mail,
   MapPin,
+  Globe2,
   CheckCircle2,
   Clock,
   Shield,
-  Globe2,
   Users,
-  TrendingDown,
+  Award,
+  Headphones,
+  SearchCheck,
+  Cog,
+  FileCheck,
+  TrendingUp,
 } from "lucide-react";
 
-type PartCategory = {
+type SupportCategory = {
   icon: any;
   title: string;
   description: string;
@@ -39,103 +40,103 @@ type BenefitItem = {
   text: string;
 };
 
-export default function MarineSpareParts() {
+export default function ShipTechnicalSupport() {
   const navigate = useNavigate();
 
-  const partCategories: PartCategory[] = [
+  const supportCategories: SupportCategory[] = [
     {
-      icon: Settings,
-      title: "Main Engine Components",
+      icon: SearchCheck,
+      title: "On-Site Diagnostics",
       description:
-        "Pistons, cylinder liners, cylinder heads, valves, and complete overhaul kits for all major brands.",
-    },
-    {
-      icon: Zap,
-      title: "Auxiliary Engine Components",
-      description:
-        "Generator parts, turbochargers, fuel injection systems, and auxiliary machinery spares.",
-    },
-    {
-      icon: Droplet,
-      title: "Purifiers & Separators",
-      description:
-        "Alfa Laval, Mitsubishi, and Westfalia purifier parts, bowls, discs, and sealing systems.",
-    },
-    {
-      icon: Activity,
-      title: "Pumps & Compressors",
-      description:
-        "Centrifugal pumps, air compressors, hydraulic pumps, and associated spare parts.",
+        "Comprehensive machinery diagnostics and fault analysis by certified marine engineers at your vessel location.",
     },
     {
       icon: Wrench,
-      title: "Hydraulic Systems",
+      title: "Maintenance & Repairs",
       description:
-        "Hydraulic motors, cylinders, valves, seals, and complete hydraulic system components.",
+        "Expert maintenance services and emergency repairs for main engines, auxiliary systems, and deck machinery.",
     },
     {
-      icon: Package,
-      title: "Electrical & Navigation",
+      icon: Settings,
+      title: "System Troubleshooting",
       description:
-        "Electrical motors, control panels, navigation equipment parts, and automation spares.",
+        "Advanced troubleshooting for electrical, hydraulic, pneumatic, and automation systems onboard.",
+    },
+    {
+      icon: Cog,
+      title: "Planned Maintenance Support",
+      description:
+        "Assistance with scheduled maintenance, overhauls, and classification society inspections.",
+    },
+    {
+      icon: AlertCircle,
+      title: "Emergency Response",
+      description:
+        "24/7 emergency technical support for critical machinery failures and urgent repairs at sea or port.",
+    },
+    {
+      icon: FileCheck,
+      title: "Technical Documentation",
+      description:
+        "Complete technical reports, spare parts recommendations, and maintenance planning documentation.",
     },
   ];
 
   const workSteps: WorkStep[] = [
     {
       number: "01",
-      icon: Search,
-      title: "Inquiry & Technical Validation",
+      icon: Phone,
+      title: "Initial Contact & Assessment",
       description:
-        "Submit your parts request with technical specifications. Our marine engineers validate requirements.",
+        "Reach out via phone or email with your technical issue. Our engineers assess the situation remotely.",
     },
     {
       number: "02",
-      icon: ShoppingCart,
-      title: "Sourcing from Verified Suppliers",
+      icon: ClipboardCheck,
+      title: "Mobilization & Dispatch",
       description:
-        "We source from our global network of OEM manufacturers and certified marine suppliers.",
+        "Our technical team mobilizes with necessary tools and equipment to your vessel location.",
     },
     {
       number: "03",
-      icon: ClipboardCheck,
-      title: "Quality Inspection & Packing",
+      icon: Wrench,
+      title: "On-Site Diagnostics & Repair",
       description:
-        "Every part undergoes strict quality control, certification verification, and secure packaging.",
+        "Comprehensive on-site inspection, diagnosis, and execution of repairs with professional precision.",
     },
     {
       number: "04",
-      icon: Truck,
-      title: "Delivery to Vessel / Suez Canal",
+      icon: FileCheck,
+      title: "Reporting & Follow-Up",
       description:
-        "Fast delivery to your vessel at port or Suez Canal anchorage with full documentation.",
+        "Detailed technical report with recommendations, spare parts list, and post-service support.",
     },
   ];
 
   const benefits: BenefitItem[] = [
     {
       icon: Clock,
-      text: "24/7 emergency delivery to Suez Canal transiting vessels",
-    },
-    {
-      icon: Shield,
-      text: "100% genuine OEM and certified aftermarket parts only",
-    },
-    {
-      icon: Globe2,
-      text: "Extensive global supplier network across 40+ countries",
+      text: "24/7 emergency response for vessels at sea or in Egyptian ports",
     },
     {
       icon: Users,
-      text: "Experienced marine engineers for technical consultation",
+      text: "Certified marine engineers with 15+ years industry experience",
     },
     {
-      icon: TrendingDown,
-      text: "Competitive pricing with transparent quotations",
+      icon: Shield,
+      text: "Expertise across all major marine engine brands and systems",
     },
     {
-      icon: CheckCircle2,
-      text: "Complete certification and warranty documentation",
+      icon: Zap,
+      text: "Rapid mobilization to Suez Canal and all Egyptian ports",
+    },
+    {
+      icon: Award,
+      text: "Classification society approved inspection and reporting",
+    },
+    {
+      icon: Headphones,
+      text: "Ongoing remote technical support and consultation services",
     },
   ];
 
@@ -148,11 +149,11 @@ export default function MarineSpareParts() {
       {/* 1. HERO SECTION */}
       <section className="relative h-[600px] lg:h-[700px] flex items-center justify-center overflow-hidden">
         {/* Background Image - Replace with actual image */}
-        {/* TODO: Replace with real image: /images/marine-engine-room.jpg */}
+        {/* TODO: Replace with real image: /images/ship-engine-room.jpg */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070')",
+            backgroundImage: "url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070')",
           }}
         >
           {/* Gradient Overlay */}
@@ -162,16 +163,15 @@ export default function MarineSpareParts() {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <div className="inline-block bg-gold/20 backdrop-blur-sm border border-gold/30 text-gold px-5 py-2 rounded-corporate font-semibold text-sm mb-6">
-            Premium Marine Supply Services
+            Expert Marine Engineering Support
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-            Marine Spare Parts Supply
+            Ship Technical Support
           </h1>
 
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto mb-10 leading-relaxed">
-            Reliable sourcing and fast delivery of genuine and OEM components for all major marine
-            engines and systems.
+            Professional on-site technical assistance for machinery troubleshooting, maintenance, and repairs by certified marine engineers.
           </p>
 
           {/* CTA Buttons */}
@@ -180,13 +180,13 @@ export default function MarineSpareParts() {
               onClick={scrollToContact}
               className="w-full sm:w-auto bg-gold hover:bg-gold-light text-navy font-bold px-10 py-4 rounded-corporate-lg transition-all duration-300 shadow-corporate-lg hover:shadow-corporate-xl hover:scale-105"
             >
-              Request a Quote
+              Request Technical Support
             </button>
             <button
               onClick={scrollToContact}
               className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white font-bold px-10 py-4 rounded-corporate-lg transition-all duration-300"
             >
-              Contact Support
+              24/7 Emergency Hotline
             </button>
           </div>
         </div>
@@ -205,43 +205,35 @@ export default function MarineSpareParts() {
                 Our Expertise
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6">
-                Trusted Marine Parts Supply Partner
+                Professional Marine Engineering Services
               </h2>
 
               <div className="space-y-5 text-gray-700 leading-relaxed">
                 <p className="text-lg">
-                  Armada Marine Group maintains an extensive network of verified marine equipment
-                  suppliers and OEM manufacturers worldwide. Our procurement specialists ensure
-                  authentic parts sourcing for vessels of all types and sizes.
+                  Armada Marine Group provides comprehensive ship technical support services delivered by highly experienced marine engineers. Our team specializes in troubleshooting, maintenance, and repair of all types of marine machinery and systems.
                 </p>
 
                 <p className="text-lg">
-                  We specialize in sourcing <strong className="text-navy">genuine and OEM-certified parts</strong> for
-                  main engines, auxiliary systems, deck machinery, and navigation equipment from all
-                  major marine brands including MAN, Wärtsilä, Caterpillar, Mitsubishi, and more.
+                  We offer <strong className="text-navy">on-site technical assistance</strong> for main engines (MAN, Wärtsilä, Caterpillar, Mitsubishi, Yanmar), auxiliary engines, generators, purifiers, pumps, compressors, hydraulic systems, and electrical/automation systems.
                 </p>
 
                 <p className="text-lg">
-                  Our strategic location enables <strong className="text-navy">rapid delivery to all Egyptian ports</strong> and
-                  Suez Canal anchorages. We provide 24/7 emergency support for vessels requiring
-                  urgent spare parts during transit or layover.
+                  Our strategic location in Egypt enables <strong className="text-navy">rapid response to vessels</strong> transiting the Suez Canal or docked at Egyptian ports. We provide 24/7 emergency technical support for urgent machinery failures requiring immediate attention.
                 </p>
 
                 <p className="text-lg">
-                  Every component undergoes rigorous quality verification and comes with complete
-                  certification documentation, manufacturer warranties, and material traceability
-                  reports for your records and classification society requirements.
+                  Every service includes comprehensive technical documentation, spare parts recommendations, and follow-up support to ensure your vessel maintains optimal operational performance and meets classification society requirements.
                 </p>
               </div>
             </div>
 
             {/* Right: Image */}
             <div className="relative">
-              {/* TODO: Replace with real image: /images/engine-parts.jpg */}
+              {/* TODO: Replace with real image: /images/marine-engineer.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1565630916779-e303be97bc8d?q=80&w=2070"
-                  alt="Marine engine spare parts"
+                  src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070"
+                  alt="Marine engineer performing technical support"
                   className="w-full h-[500px] object-cover"
                 />
               </div>
@@ -250,11 +242,11 @@ export default function MarineSpareParts() {
               <div className="absolute -bottom-8 -left-8 bg-navy text-white p-6 rounded-corporate-lg shadow-corporate-xl">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 bg-gold/20 rounded-corporate flex items-center justify-center">
-                    <Package className="text-gold" size={32} />
+                    <Wrench className="text-gold" size={32} />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-gold">10,000+</div>
-                    <div className="text-sm text-gray-300">Parts Delivered</div>
+                    <div className="text-3xl font-bold text-gold">500+</div>
+                    <div className="text-sm text-gray-300">Vessels Serviced</div>
                   </div>
                 </div>
               </div>
@@ -263,26 +255,25 @@ export default function MarineSpareParts() {
         </div>
       </section>
 
-      {/* 3. CATEGORIES OF PARTS WE SUPPLY */}
+      {/* 3. SUPPORT CATEGORIES */}
       <section className="py-20 lg:py-28 bg-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
             <div className="inline-block bg-navy/10 text-navy px-4 py-2 rounded-corporate font-semibold text-sm mb-4">
-              Parts Inventory
+              Service Offerings
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6">
-              Complete Range of Marine Spares
+              Comprehensive Technical Support Services
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              From critical engine components to specialized navigation equipment, we source every
-              part your vessel needs.
+              From emergency repairs to planned maintenance, our marine engineers provide expert support for all vessel types and machinery systems.
             </p>
           </div>
 
           {/* Grid of Categories */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {partCategories.map((category) => {
+            {supportCategories.map((category) => {
               const Icon = category.icon;
               return (
                 <div
@@ -313,7 +304,7 @@ export default function MarineSpareParts() {
               How We Work
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              A streamlined 4-step process ensures fast, reliable delivery of quality marine parts.
+              A streamlined 4-step process ensures fast, professional technical support for your vessel.
             </p>
           </div>
 
@@ -354,60 +345,60 @@ export default function MarineSpareParts() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
-              Quality Assurance & Logistics
+              Professional Technical Services
             </h2>
             <p className="text-lg text-gray-700">
-              Professional handling from warehouse to vessel delivery.
+              Expert marine engineers delivering quality technical support worldwide.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Image 1 */}
-            {/* TODO: Replace with real image: /images/spares-1.jpg */}
+            {/* TODO: Replace with real image: /images/tech-support-1.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070"
-                alt="Spare parts warehouse"
+                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=2070"
+                alt="Marine engineer diagnostics"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
               <div className="bg-white p-4">
-                <h4 className="font-bold text-navy">Organized Warehouse</h4>
-                <p className="text-sm text-gray-600">Climate-controlled parts storage</p>
+                <h4 className="font-bold text-navy">Engine Diagnostics</h4>
+                <p className="text-sm text-gray-600">Advanced troubleshooting & analysis</p>
               </div>
             </div>
 
             {/* Image 2 */}
-            {/* TODO: Replace with real image: /images/spares-2.jpg */}
+            {/* TODO: Replace with real image: /images/tech-support-2.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092583537-20d51b4b4f1b?q=80&w=2070"
-                alt="Technical inspection"
+                src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?q=80&w=2070"
+                alt="On-site repairs"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
               <div className="bg-white p-4">
-                <h4 className="font-bold text-navy">Quality Inspection</h4>
-                <p className="text-sm text-gray-600">Rigorous verification process</p>
+                <h4 className="font-bold text-navy">On-Site Repairs</h4>
+                <p className="text-sm text-gray-600">Expert maintenance & repairs</p>
               </div>
             </div>
 
             {/* Image 3 */}
-            {/* TODO: Replace with real image: /images/spares-3.jpg */}
+            {/* TODO: Replace with real image: /images/tech-support-3.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070"
-                alt="Packed parts ready for delivery"
+                src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070"
+                alt="Technical documentation"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
               <div className="bg-white p-4">
-                <h4 className="font-bold text-navy">Ready for Delivery</h4>
-                <p className="text-sm text-gray-600">Secure packaging & documentation</p>
+                <h4 className="font-bold text-navy">Technical Reporting</h4>
+                <p className="text-sm text-gray-600">Comprehensive documentation</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6. WHY CHOOSE AMG FOR SPARE PARTS */}
+      {/* 6. WHY CHOOSE AMG FOR TECHNICAL SUPPORT */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -417,11 +408,10 @@ export default function MarineSpareParts() {
                 Why Choose AMG
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6">
-                Your Trusted Marine Parts Partner
+                Your Trusted Technical Partner at Sea
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                With decades of maritime industry experience and a commitment to excellence, AMG
-                delivers the reliability and quality your vessel operations demand.
+                With decades of maritime engineering experience and a commitment to excellence, AMG delivers the reliability and expertise your vessel operations demand.
               </p>
             </div>
 
@@ -456,30 +446,29 @@ export default function MarineSpareParts() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Need Spare Parts Urgently?
+            Need Urgent Technical Support?
           </h2>
           <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-            Our operations team provides 24/7 support for vessels transiting the Suez Canal and
-            docked at Egyptian ports. Get your critical parts delivered fast.
+            Our marine engineering team provides 24/7 emergency support for vessels at sea or in Egyptian ports. Get expert assistance when you need it most.
           </p>
 
           <button
             onClick={scrollToContact}
             className="bg-gold hover:bg-gold-light text-navy font-bold px-12 py-5 rounded-corporate-lg transition-all duration-300 shadow-corporate-xl hover:scale-105 text-lg"
           >
-            Get a Quotation Now
+            Contact Our Engineers Now
           </button>
 
           {/* Quick Contact Info */}
           <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center text-gray-300">
             <div className="flex items-center gap-2">
               <Phone className="text-gold" size={20} />
-              <span className="font-medium">24/7 Hotline Available</span>
+              <span className="font-medium">24/7 Emergency Hotline</span>
             </div>
             <div className="hidden sm:block w-px h-6 bg-gray-600"></div>
             <div className="flex items-center gap-2">
               <Clock className="text-gold" size={20} />
-              <span className="font-medium">Emergency Response Ready</span>
+              <span className="font-medium">Rapid Response Team</span>
             </div>
           </div>
         </div>
@@ -497,10 +486,10 @@ export default function MarineSpareParts() {
               <div>
                 <h4 className="font-bold text-navy mb-1">Email Us</h4>
                 <a
-                  href="mailto:spares@armadamarine.com"
+                  href="mailto:support@armadamarine.com"
                   className="text-gray-700 hover:text-gold transition-colors"
                 >
-                  spares@armadamarine.com
+                  support@armadamarine.com
                 </a>
               </div>
             </div>

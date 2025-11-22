@@ -1,33 +1,38 @@
 import { useNavigate } from "react-router-dom";
 import {
-  Package,
-  Wrench,
+  Factory,
   Settings,
-  Droplet,
-  Activity,
-  Zap,
-  Search,
-  ShoppingCart,
-  ClipboardCheck,
-  Truck,
+  TrendingUp,
+  Users,
+  Clock,
+  CheckCircle2,
+  Shield,
+  Package,
+  Target,
+  Lightbulb,
   Phone,
   Mail,
   MapPin,
-  CheckCircle2,
-  Clock,
-  Shield,
   Globe2,
-  Users,
-  TrendingDown,
+  Wrench,
+  Zap,
+  Award,
+  BarChart3,
+  Cog,
+  Box,
+  Hammer,
+  Cpu,
+  CircuitBoard,
+  Layers,
 } from "lucide-react";
 
-type PartCategory = {
+type ManufacturingFeature = {
   icon: any;
   title: string;
   description: string;
 };
 
-type WorkStep = {
+type ObjectiveItem = {
   number: string;
   icon: any;
   title: string;
@@ -39,103 +44,103 @@ type BenefitItem = {
   text: string;
 };
 
-export default function MarineSpareParts() {
+export default function LocalManufacturingSolutions() {
   const navigate = useNavigate();
 
-  const partCategories: PartCategory[] = [
+  const manufacturingFeatures: ManufacturingFeature[] = [
     {
-      icon: Settings,
-      title: "Main Engine Components",
+      icon: Clock,
+      title: "Reduced Lead Times",
       description:
-        "Pistons, cylinder liners, cylinder heads, valves, and complete overhaul kits for all major brands.",
+        "Local production dramatically reduces delivery times for critical spare parts, minimizing vessel downtime and operational delays.",
     },
     {
-      icon: Zap,
-      title: "Auxiliary Engine Components",
+      icon: TrendingUp,
+      title: "Cost-Effective Supply",
       description:
-        "Generator parts, turbochargers, fuel injection systems, and auxiliary machinery spares.",
+        "Regional manufacturing enables competitive pricing by eliminating long-distance shipping costs and import complexities.",
     },
     {
-      icon: Droplet,
-      title: "Purifiers & Separators",
+      icon: Shield,
+      title: "Quality Control",
       description:
-        "Alfa Laval, Mitsubishi, and Westfalia purifier parts, bowls, discs, and sealing systems.",
-    },
-    {
-      icon: Activity,
-      title: "Pumps & Compressors",
-      description:
-        "Centrifugal pumps, air compressors, hydraulic pumps, and associated spare parts.",
-    },
-    {
-      icon: Wrench,
-      title: "Hydraulic Systems",
-      description:
-        "Hydraulic motors, cylinders, valves, seals, and complete hydraulic system components.",
+        "Direct oversight of manufacturing processes ensures consistent quality standards and adherence to maritime specifications.",
     },
     {
       icon: Package,
-      title: "Electrical & Navigation",
+      title: "Increased Availability",
       description:
-        "Electrical motors, control panels, navigation equipment parts, and automation spares.",
+        "On-demand production of critical components ensures continuous availability without reliance on distant suppliers.",
+    },
+    {
+      icon: Users,
+      title: "Local Employment",
+      description:
+        "Creating skilled manufacturing jobs in Egypt while building expertise in marine component production.",
+    },
+    {
+      icon: Target,
+      title: "Regional Industry Support",
+      description:
+        "Strengthening Egypt's maritime manufacturing capabilities and reducing regional dependence on imported parts.",
     },
   ];
 
-  const workSteps: WorkStep[] = [
+  const objectives: ObjectiveItem[] = [
     {
       number: "01",
-      icon: Search,
-      title: "Inquiry & Technical Validation",
+      icon: Lightbulb,
+      title: "Facility Development",
       description:
-        "Submit your parts request with technical specifications. Our marine engineers validate requirements.",
+        "Establishing modern manufacturing facilities equipped with precision machinery for marine component production.",
     },
     {
       number: "02",
-      icon: ShoppingCart,
-      title: "Sourcing from Verified Suppliers",
+      icon: Cog,
+      title: "Technical Capabilities",
       description:
-        "We source from our global network of OEM manufacturers and certified marine suppliers.",
+        "Building expertise in precision machining, fabrication, and quality control for marine-grade components.",
     },
     {
       number: "03",
-      icon: ClipboardCheck,
-      title: "Quality Inspection & Packing",
+      icon: Award,
+      title: "Certification & Standards",
       description:
-        "Every part undergoes strict quality control, certification verification, and secure packaging.",
+        "Achieving international maritime certifications and compliance with class society requirements.",
     },
     {
       number: "04",
-      icon: Truck,
-      title: "Delivery to Vessel / Suez Canal",
+      icon: BarChart3,
+      title: "Regional Distribution",
       description:
-        "Fast delivery to your vessel at port or Suez Canal anchorage with full documentation.",
+        "Creating efficient distribution networks for locally manufactured parts across Egypt and the region.",
     },
   ];
 
   const benefits: BenefitItem[] = [
     {
-      icon: Clock,
-      text: "24/7 emergency delivery to Suez Canal transiting vessels",
+      icon: Zap,
+      text: "Faster response times for urgent spare parts requirements",
+    },
+    {
+      icon: TrendingUp,
+      text: "Competitive pricing through local production and reduced logistics",
     },
     {
       icon: Shield,
-      text: "100% genuine OEM and certified aftermarket parts only",
+      text: "Quality assurance with direct manufacturing oversight",
     },
     {
-      icon: Globe2,
-      text: "Extensive global supplier network across 40+ countries",
+      icon: Clock,
+      text: "On-demand production reducing inventory and storage costs",
     },
     {
       icon: Users,
-      text: "Experienced marine engineers for technical consultation",
-    },
-    {
-      icon: TrendingDown,
-      text: "Competitive pricing with transparent quotations",
+      text: "Supporting local economy and developing skilled workforce",
     },
     {
       icon: CheckCircle2,
-      text: "Complete certification and warranty documentation",
+      text: "Reduced dependence on international supply chains",
     },
   ];
 
@@ -143,50 +148,69 @@ export default function MarineSpareParts() {
     navigate("/#contact");
   };
 
+  const handleRegisterInterest = () => {
+    window.location.href = "mailto:info@armadamarine.com?subject=Local%20Manufacturing%20Inquiry";
+  };
+
+  const handleDiscussPartnership = () => {
+    window.location.href = "mailto:partnerships@armadamarine.com?subject=Manufacturing%20Partnership%20Inquiry";
+  };
+
+  const handleContactEmail = () => {
+    window.location.href = "mailto:info@armadamarine.com";
+  };
+
+  const handleContactPhone = () => {
+    window.location.href = "tel:+201019062754";
+  };
+
   return (
     <div className="bg-white">
       {/* 1. HERO SECTION */}
       <section className="relative h-[600px] lg:h-[700px] flex items-center justify-center overflow-hidden">
-        {/* Background Image - Replace with actual image */}
-        {/* TODO: Replace with real image: /images/marine-engine-room.jpg */}
+        {/* Background Image */}
+        {/* TODO: Replace with real image: /images/local-mfg-hero.jpg */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070')",
+            backgroundImage: "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070')",
           }}
         >
-          {/* Gradient Overlay */}
+          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/70"></div>
         </div>
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          {/* Label Chip */}
           <div className="inline-block bg-gold/20 backdrop-blur-sm border border-gold/30 text-gold px-5 py-2 rounded-corporate font-semibold text-sm mb-6">
-            Premium Marine Supply Services
+            <Factory className="inline mr-2" size={16} />
+            Future Initiative
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-            Marine Spare Parts Supply
+            Future: Local Manufacturing Solutions
           </h1>
 
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto mb-10 leading-relaxed">
-            Reliable sourcing and fast delivery of genuine and OEM components for all major marine
-            engines and systems.
+            Developing local manufacturing capabilities for marine components and parts to support faster, cost-effective supply in the regional maritime industry.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
-              onClick={scrollToContact}
-              className="w-full sm:w-auto bg-gold hover:bg-gold-light text-navy font-bold px-10 py-4 rounded-corporate-lg transition-all duration-300 shadow-corporate-lg hover:shadow-corporate-xl hover:scale-105"
+              onClick={handleRegisterInterest}
+              className="w-full sm:w-auto bg-gold hover:bg-gold-light text-navy font-bold px-10 py-4 rounded-corporate-lg transition-all duration-300 shadow-corporate-lg hover:shadow-corporate-xl hover:scale-105 flex items-center justify-center gap-2"
             >
-              Request a Quote
+              <Lightbulb size={20} />
+              Register Interest
             </button>
             <button
-              onClick={scrollToContact}
-              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white font-bold px-10 py-4 rounded-corporate-lg transition-all duration-300"
+              onClick={handleDiscussPartnership}
+              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white font-bold px-10 py-4 rounded-corporate-lg transition-all duration-300 flex items-center justify-center gap-2"
             >
-              Contact Support
+              <Users size={20} />
+              Discuss Partnership
             </button>
           </div>
         </div>
@@ -195,53 +219,45 @@ export default function MarineSpareParts() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
-      {/* 2. SERVICE OVERVIEW SECTION */}
+      {/* 2. VISION & OBJECTIVES SECTION */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Text Content */}
             <div>
               <div className="inline-block bg-navy/10 text-navy px-4 py-2 rounded-corporate font-semibold text-sm mb-4">
-                Our Expertise
+                Our Vision
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6">
-                Trusted Marine Parts Supply Partner
+                Building Regional Manufacturing Capacity
               </h2>
 
               <div className="space-y-5 text-gray-700 leading-relaxed">
                 <p className="text-lg">
-                  Armada Marine Group maintains an extensive network of verified marine equipment
-                  suppliers and OEM manufacturers worldwide. Our procurement specialists ensure
-                  authentic parts sourcing for vessels of all types and sizes.
+                  Armada Marine Group is developing plans to establish <strong className="text-navy">local manufacturing capabilities</strong> in Egypt for marine components and spare parts. This strategic initiative aims to reduce dependence on international supply chains while creating faster, more reliable supply solutions for the regional maritime industry.
                 </p>
 
                 <p className="text-lg">
-                  We specialize in sourcing <strong className="text-navy">genuine and OEM-certified parts</strong> for
-                  main engines, auxiliary systems, deck machinery, and navigation equipment from all
-                  major marine brands including MAN, Wärtsilä, Caterpillar, Mitsubishi, and more.
+                  By building or partnering with <strong className="text-navy">modern manufacturing facilities</strong>, AMG will dramatically reduce lead times for critical spare parts, increase availability of essential components, and provide cost-effective alternatives to imported products. Local production enables rapid response to urgent vessel requirements.
                 </p>
 
                 <p className="text-lg">
-                  Our strategic location enables <strong className="text-navy">rapid delivery to all Egyptian ports</strong> and
-                  Suez Canal anchorages. We provide 24/7 emergency support for vessels requiring
-                  urgent spare parts during transit or layover.
+                  This initiative supports <strong className="text-navy">local industry development and job creation</strong> while building Egypt's expertise in precision marine component manufacturing. We envision becoming a regional manufacturing hub serving vessels across the Mediterranean and Red Sea.
                 </p>
 
                 <p className="text-lg">
-                  Every component undergoes rigorous quality verification and comes with complete
-                  certification documentation, manufacturer warranties, and material traceability
-                  reports for your records and classification society requirements.
+                  Through investment in technology, training, and quality systems, AMG aims to deliver <strong className="text-navy">marine-grade components</strong> that meet international standards while supporting Egypt's growing maritime sector.
                 </p>
               </div>
             </div>
 
             {/* Right: Image */}
             <div className="relative">
-              {/* TODO: Replace with real image: /images/engine-parts.jpg */}
+              {/* TODO: Replace with real image: /images/local-mfg-vision.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1565630916779-e303be97bc8d?q=80&w=2070"
-                  alt="Marine engine spare parts"
+                  src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=2070"
+                  alt="Local manufacturing facility vision"
                   className="w-full h-[500px] object-cover"
                 />
               </div>
@@ -250,11 +266,11 @@ export default function MarineSpareParts() {
               <div className="absolute -bottom-8 -left-8 bg-navy text-white p-6 rounded-corporate-lg shadow-corporate-xl">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 bg-gold/20 rounded-corporate flex items-center justify-center">
-                    <Package className="text-gold" size={32} />
+                    <Lightbulb className="text-gold" size={32} />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-gold">10,000+</div>
-                    <div className="text-sm text-gray-300">Parts Delivered</div>
+                    <div className="text-3xl font-bold text-gold">2025+</div>
+                    <div className="text-sm text-gray-300">Target Launch</div>
                   </div>
                 </div>
               </div>
@@ -263,37 +279,36 @@ export default function MarineSpareParts() {
         </div>
       </section>
 
-      {/* 3. CATEGORIES OF PARTS WE SUPPLY */}
+      {/* 3. MANUFACTURING FEATURES SECTION */}
       <section className="py-20 lg:py-28 bg-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
             <div className="inline-block bg-navy/10 text-navy px-4 py-2 rounded-corporate font-semibold text-sm mb-4">
-              Parts Inventory
+              Key Benefits
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6">
-              Complete Range of Marine Spares
+              Why Local Manufacturing Matters
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              From critical engine components to specialized navigation equipment, we source every
-              part your vessel needs.
+              Regional manufacturing capabilities deliver faster response, better pricing, and stronger supply chain resilience for the maritime industry.
             </p>
           </div>
 
-          {/* Grid of Categories */}
+          {/* Grid of Features */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {partCategories.map((category) => {
-              const Icon = category.icon;
+            {manufacturingFeatures.map((feature) => {
+              const Icon = feature.icon;
               return (
                 <div
-                  key={category.title}
+                  key={feature.title}
                   className="group bg-white rounded-corporate-lg p-8 shadow-corporate hover:shadow-corporate-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200/50"
                 >
                   <div className="w-14 h-14 bg-gradient-to-br from-navy to-navy-light rounded-corporate flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="text-gold" size={26} />
                   </div>
-                  <h3 className="text-xl font-bold text-navy mb-3">{category.title}</h3>
-                  <p className="text-gray-700 leading-relaxed">{category.description}</p>
+                  <h3 className="text-xl font-bold text-navy mb-3">{feature.title}</h3>
+                  <p className="text-gray-700 leading-relaxed">{feature.description}</p>
                 </div>
               );
             })}
@@ -301,19 +316,19 @@ export default function MarineSpareParts() {
         </div>
       </section>
 
-      {/* 4. HOW WE WORK SECTION */}
+      {/* 4. OBJECTIVES / ROADMAP SECTION */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
             <div className="inline-block bg-navy/10 text-navy px-4 py-2 rounded-corporate font-semibold text-sm mb-4">
-              Our Process
+              Strategic Roadmap
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6">
-              How We Work
+              Building Manufacturing Excellence
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              A streamlined 4-step process ensures fast, reliable delivery of quality marine parts.
+              A phased approach to developing world-class local manufacturing capabilities for marine components.
             </p>
           </div>
 
@@ -322,15 +337,15 @@ export default function MarineSpareParts() {
             {/* Connection Line - Hidden on mobile */}
             <div className="hidden lg:block absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-navy via-gold to-navy opacity-20"></div>
 
-            {workSteps.map((step) => {
-              const Icon = step.icon;
+            {objectives.map((objective) => {
+              const Icon = objective.icon;
               return (
-                <div key={step.title} className="relative">
+                <div key={objective.title} className="relative">
                   {/* Step Card */}
                   <div className="bg-light rounded-corporate-lg p-6 h-full border-2 border-navy/10 hover:border-gold/50 transition-colors duration-300">
                     {/* Step Number Badge */}
                     <div className="relative inline-flex items-center justify-center w-16 h-16 bg-navy rounded-corporate mb-4 z-10">
-                      <span className="text-2xl font-bold text-gold">{step.number}</span>
+                      <span className="text-2xl font-bold text-gold">{objective.number}</span>
                     </div>
 
                     {/* Icon */}
@@ -339,8 +354,8 @@ export default function MarineSpareParts() {
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-lg font-bold text-navy mb-3">{step.title}</h3>
-                    <p className="text-gray-700 text-sm leading-relaxed">{step.description}</p>
+                    <h3 className="text-lg font-bold text-navy mb-3">{objective.title}</h3>
+                    <p className="text-gray-700 text-sm leading-relaxed">{objective.description}</p>
                   </div>
                 </div>
               );
@@ -349,79 +364,85 @@ export default function MarineSpareParts() {
         </div>
       </section>
 
-      {/* 5. GALLERY / IMAGES SECTION */}
+      {/* 5. MANUFACTURING CAPABILITIES GALLERY */}
       <section className="py-20 lg:py-28 bg-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
-              Quality Assurance & Logistics
+              Planned Manufacturing Capabilities
             </h2>
             <p className="text-lg text-gray-700">
-              Professional handling from warehouse to vessel delivery.
+              Future production facilities for critical marine components and systems.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {/* Image 1 */}
-            {/* TODO: Replace with real image: /images/spares-1.jpg */}
+            {/* Capability Image 1 */}
+            {/* TODO: Replace with real images */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070"
-                alt="Spare parts warehouse"
+                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070"
+                alt="Precision machining and components"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
               <div className="bg-white p-4">
-                <h4 className="font-bold text-navy">Organized Warehouse</h4>
-                <p className="text-sm text-gray-600">Climate-controlled parts storage</p>
+                <h4 className="font-bold text-navy flex items-center gap-2">
+                  <Cog className="text-gold" size={20} />
+                  Precision Machining
+                </h4>
+                <p className="text-sm text-gray-600">CNC and specialized component production</p>
               </div>
             </div>
 
-            {/* Image 2 */}
-            {/* TODO: Replace with real image: /images/spares-2.jpg */}
+            {/* Capability Image 2 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092583537-20d51b4b4f1b?q=80&w=2070"
-                alt="Technical inspection"
+                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070"
+                alt="Fabrication and assembly"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
               <div className="bg-white p-4">
-                <h4 className="font-bold text-navy">Quality Inspection</h4>
-                <p className="text-sm text-gray-600">Rigorous verification process</p>
+                <h4 className="font-bold text-navy flex items-center gap-2">
+                  <Hammer className="text-gold" size={20} />
+                  Fabrication & Assembly
+                </h4>
+                <p className="text-sm text-gray-600">Component fabrication and system integration</p>
               </div>
             </div>
 
-            {/* Image 3 */}
-            {/* TODO: Replace with real image: /images/spares-3.jpg */}
+            {/* Capability Image 3 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070"
-                alt="Packed parts ready for delivery"
+                src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=2070"
+                alt="Quality control and testing"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
               <div className="bg-white p-4">
-                <h4 className="font-bold text-navy">Ready for Delivery</h4>
-                <p className="text-sm text-gray-600">Secure packaging & documentation</p>
+                <h4 className="font-bold text-navy flex items-center gap-2">
+                  <Shield className="text-gold" size={20} />
+                  Quality Control
+                </h4>
+                <p className="text-sm text-gray-600">Testing and certification processes</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6. WHY CHOOSE AMG FOR SPARE PARTS */}
+      {/* 6. WHY PARTNER WITH AMG SECTION */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: Title */}
             <div>
               <div className="inline-block bg-navy/10 text-navy px-4 py-2 rounded-corporate font-semibold text-sm mb-4">
-                Why Choose AMG
+                Partnership Opportunity
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6">
-                Your Trusted Marine Parts Partner
+                Join Our Manufacturing Vision
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                With decades of maritime industry experience and a commitment to excellence, AMG
-                delivers the reliability and quality your vessel operations demand.
+                AMG welcomes partnerships with manufacturers, technology providers, and industry stakeholders to build Egypt's marine manufacturing capabilities.
               </p>
             </div>
 
@@ -446,7 +467,7 @@ export default function MarineSpareParts() {
         </div>
       </section>
 
-      {/* 7. CTA SECTION (Bold Navy Block) */}
+      {/* 7. CTA SECTION */}
       <section className="relative py-20 lg:py-24 bg-navy overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -456,30 +477,37 @@ export default function MarineSpareParts() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Need Spare Parts Urgently?
+            Interested in Local Manufacturing?
           </h2>
           <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-            Our operations team provides 24/7 support for vessels transiting the Suez Canal and
-            docked at Egyptian ports. Get your critical parts delivered fast.
+            Register your interest or discuss partnership opportunities to be part of Egypt's marine manufacturing future.
           </p>
 
-          <button
-            onClick={scrollToContact}
-            className="bg-gold hover:bg-gold-light text-navy font-bold px-12 py-5 rounded-corporate-lg transition-all duration-300 shadow-corporate-xl hover:scale-105 text-lg"
-          >
-            Get a Quotation Now
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button
+              onClick={handleRegisterInterest}
+              className="w-full sm:w-auto bg-gold hover:bg-gold-light text-navy font-bold px-12 py-5 rounded-corporate-lg transition-all duration-300 shadow-corporate-xl hover:scale-105 text-lg"
+            >
+              Register Interest
+            </button>
+            <button
+              onClick={handleDiscussPartnership}
+              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white font-bold px-12 py-5 rounded-corporate-lg transition-all duration-300 text-lg"
+            >
+              Discuss Partnership
+            </button>
+          </div>
 
           {/* Quick Contact Info */}
           <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center text-gray-300">
             <div className="flex items-center gap-2">
               <Phone className="text-gold" size={20} />
-              <span className="font-medium">24/7 Hotline Available</span>
+              <span className="font-medium">Contact Available</span>
             </div>
             <div className="hidden sm:block w-px h-6 bg-gray-600"></div>
             <div className="flex items-center gap-2">
-              <Clock className="text-gold" size={20} />
-              <span className="font-medium">Emergency Response Ready</span>
+              <Factory className="text-gold" size={20} />
+              <span className="font-medium">Future Initiative</span>
             </div>
           </div>
         </div>
@@ -497,10 +525,10 @@ export default function MarineSpareParts() {
               <div>
                 <h4 className="font-bold text-navy mb-1">Email Us</h4>
                 <a
-                  href="mailto:spares@armadamarine.com"
+                  href="mailto:info@armadamarine.com"
                   className="text-gray-700 hover:text-gold transition-colors"
                 >
-                  spares@armadamarine.com
+                  info@armadamarine.com
                 </a>
               </div>
             </div>
@@ -511,12 +539,12 @@ export default function MarineSpareParts() {
                 <Phone className="text-gold" size={22} />
               </div>
               <div>
-                <h4 className="font-bold text-navy mb-1">Call 24/7</h4>
+                <h4 className="font-bold text-navy mb-1">Call Us</h4>
                 <a
-                  href="tel:+201001234567"
+                  href="tel:+201019062754"
                   className="text-gray-700 hover:text-gold transition-colors"
                 >
-                  +20 100 123 4567
+                  +20 101 906 2754
                 </a>
               </div>
             </div>

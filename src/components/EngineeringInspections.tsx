@@ -1,27 +1,28 @@
 import { useNavigate } from "react-router-dom";
 import {
-  Package,
-  Wrench,
-  Settings,
-  Droplet,
-  Activity,
-  Zap,
-  Search,
-  ShoppingCart,
+  FileSearch,
+  Gauge,
   ClipboardCheck,
-  Truck,
+  Settings,
+  Microscope,
+  Award,
   Phone,
   Mail,
   MapPin,
+  Globe2,
   CheckCircle2,
   Clock,
   Shield,
-  Globe2,
   Users,
-  TrendingDown,
+  FileText,
+  Camera,
+  Search,
+  FileCheck,
+  Target,
+  TrendingUp,
 } from "lucide-react";
 
-type PartCategory = {
+type InspectionCategory = {
   icon: any;
   title: string;
   description: string;
@@ -39,103 +40,103 @@ type BenefitItem = {
   text: string;
 };
 
-export default function MarineSpareParts() {
+export default function EngineeringInspections() {
   const navigate = useNavigate();
 
-  const partCategories: PartCategory[] = [
+  const inspectionCategories: InspectionCategory[] = [
     {
       icon: Settings,
-      title: "Main Engine Components",
+      title: "Main Engine Inspections",
       description:
-        "Pistons, cylinder liners, cylinder heads, valves, and complete overhaul kits for all major brands.",
+        "Comprehensive inspections of main engines including cylinder condition, valve clearances, and performance analysis.",
     },
     {
-      icon: Zap,
-      title: "Auxiliary Engine Components",
+      icon: Gauge,
+      title: "Precision Measurements",
       description:
-        "Generator parts, turbochargers, fuel injection systems, and auxiliary machinery spares.",
+        "Accurate crankshaft deflection, cylinder liner wear, and piston crown measurements using calibrated instruments.",
     },
     {
-      icon: Droplet,
-      title: "Purifiers & Separators",
+      icon: Microscope,
+      title: "Non-Destructive Testing (NDT)",
       description:
-        "Alfa Laval, Mitsubishi, and Westfalia purifier parts, bowls, discs, and sealing systems.",
+        "Ultrasonic thickness gauging, magnetic particle testing, and dye penetrant inspections for structural integrity.",
     },
     {
-      icon: Activity,
-      title: "Pumps & Compressors",
+      icon: ClipboardCheck,
+      title: "Classification Society Inspections",
       description:
-        "Centrifugal pumps, air compressors, hydraulic pumps, and associated spare parts.",
+        "Preparation and support for class surveys, including documentation and technical assistance during inspections.",
     },
     {
-      icon: Wrench,
-      title: "Hydraulic Systems",
+      icon: Camera,
+      title: "Borescope Inspections",
       description:
-        "Hydraulic motors, cylinders, valves, seals, and complete hydraulic system components.",
+        "Internal visual inspections of cylinders, turbochargers, and hard-to-reach areas using advanced borescope technology.",
     },
     {
-      icon: Package,
-      title: "Electrical & Navigation",
+      icon: FileText,
+      title: "Condition Monitoring",
       description:
-        "Electrical motors, control panels, navigation equipment parts, and automation spares.",
+        "Vibration analysis, oil analysis coordination, and trend monitoring for predictive maintenance programs.",
     },
   ];
 
   const workSteps: WorkStep[] = [
     {
       number: "01",
-      icon: Search,
-      title: "Inquiry & Technical Validation",
+      icon: Phone,
+      title: "Inspection Planning",
       description:
-        "Submit your parts request with technical specifications. Our marine engineers validate requirements.",
+        "Discuss your inspection requirements, timeline, and vessel specifications with our technical team.",
     },
     {
       number: "02",
-      icon: ShoppingCart,
-      title: "Sourcing from Verified Suppliers",
+      icon: Search,
+      title: "On-Site Inspection Execution",
       description:
-        "We source from our global network of OEM manufacturers and certified marine suppliers.",
+        "Our certified engineers perform thorough inspections using calibrated equipment and industry best practices.",
     },
     {
       number: "03",
-      icon: ClipboardCheck,
-      title: "Quality Inspection & Packing",
+      icon: FileCheck,
+      title: "Data Analysis & Evaluation",
       description:
-        "Every part undergoes strict quality control, certification verification, and secure packaging.",
+        "Comprehensive analysis of inspection data with comparison to manufacturer standards and previous readings.",
     },
     {
       number: "04",
-      icon: Truck,
-      title: "Delivery to Vessel / Suez Canal",
+      icon: FileText,
+      title: "Detailed Technical Report",
       description:
-        "Fast delivery to your vessel at port or Suez Canal anchorage with full documentation.",
+        "Receive a complete inspection report with findings, recommendations, and photographic documentation.",
     },
   ];
 
   const benefits: BenefitItem[] = [
     {
-      icon: Clock,
-      text: "24/7 emergency delivery to Suez Canal transiting vessels",
-    },
-    {
-      icon: Shield,
-      text: "100% genuine OEM and certified aftermarket parts only",
-    },
-    {
-      icon: Globe2,
-      text: "Extensive global supplier network across 40+ countries",
+      icon: Award,
+      text: "Class-approved inspections accepted by all major classification societies",
     },
     {
       icon: Users,
-      text: "Experienced marine engineers for technical consultation",
+      text: "Experienced marine engineers with manufacturer training certifications",
     },
     {
-      icon: TrendingDown,
-      text: "Competitive pricing with transparent quotations",
+      icon: Shield,
+      text: "Calibrated precision instruments with valid certification documentation",
     },
     {
-      icon: CheckCircle2,
-      text: "Complete certification and warranty documentation",
+      icon: Clock,
+      text: "Flexible scheduling to minimize vessel downtime and operational impact",
+    },
+    {
+      icon: FileText,
+      text: "Comprehensive reports with actionable recommendations and trend analysis",
+    },
+    {
+      icon: Target,
+      text: "Early detection of potential issues preventing costly breakdowns",
     },
   ];
 
@@ -148,11 +149,11 @@ export default function MarineSpareParts() {
       {/* 1. HERO SECTION */}
       <section className="relative h-[600px] lg:h-[700px] flex items-center justify-center overflow-hidden">
         {/* Background Image - Replace with actual image */}
-        {/* TODO: Replace with real image: /images/marine-engine-room.jpg */}
+        {/* TODO: Replace with real image: /images/engine-inspection.jpg */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070')",
+            backgroundImage: "url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070')",
           }}
         >
           {/* Gradient Overlay */}
@@ -162,16 +163,15 @@ export default function MarineSpareParts() {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <div className="inline-block bg-gold/20 backdrop-blur-sm border border-gold/30 text-gold px-5 py-2 rounded-corporate font-semibold text-sm mb-6">
-            Premium Marine Supply Services
+            Professional Marine Engineering Services
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-            Marine Spare Parts Supply
+            Engineering Inspections
           </h1>
 
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto mb-10 leading-relaxed">
-            Reliable sourcing and fast delivery of genuine and OEM components for all major marine
-            engines and systems.
+            Thorough technical inspections and precision measurements for marine engines and equipment with comprehensive reporting.
           </p>
 
           {/* CTA Buttons */}
@@ -180,13 +180,13 @@ export default function MarineSpareParts() {
               onClick={scrollToContact}
               className="w-full sm:w-auto bg-gold hover:bg-gold-light text-navy font-bold px-10 py-4 rounded-corporate-lg transition-all duration-300 shadow-corporate-lg hover:shadow-corporate-xl hover:scale-105"
             >
-              Request a Quote
+              Schedule an Inspection
             </button>
             <button
               onClick={scrollToContact}
               className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white font-bold px-10 py-4 rounded-corporate-lg transition-all duration-300"
             >
-              Contact Support
+              Request a Quote
             </button>
           </div>
         </div>
@@ -205,43 +205,35 @@ export default function MarineSpareParts() {
                 Our Expertise
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6">
-                Trusted Marine Parts Supply Partner
+                Precision Engineering Inspection Services
               </h2>
 
               <div className="space-y-5 text-gray-700 leading-relaxed">
                 <p className="text-lg">
-                  Armada Marine Group maintains an extensive network of verified marine equipment
-                  suppliers and OEM manufacturers worldwide. Our procurement specialists ensure
-                  authentic parts sourcing for vessels of all types and sizes.
+                  Armada Marine Group provides professional marine engineering inspection services delivered by certified marine engineers with extensive experience across all vessel types and machinery systems.
                 </p>
 
                 <p className="text-lg">
-                  We specialize in sourcing <strong className="text-navy">genuine and OEM-certified parts</strong> for
-                  main engines, auxiliary systems, deck machinery, and navigation equipment from all
-                  major marine brands including MAN, Wärtsilä, Caterpillar, Mitsubishi, and more.
+                  Our <strong className="text-navy">comprehensive inspection services</strong> include main engine inspections, auxiliary machinery assessments, precision measurements, non-destructive testing (NDT), and classification society survey support for vessels operating in Egyptian waters and the Suez Canal region.
                 </p>
 
                 <p className="text-lg">
-                  Our strategic location enables <strong className="text-navy">rapid delivery to all Egyptian ports</strong> and
-                  Suez Canal anchorages. We provide 24/7 emergency support for vessels requiring
-                  urgent spare parts during transit or layover.
+                  We utilize <strong className="text-navy">calibrated precision instruments</strong> and industry-standard methodologies to deliver accurate, reliable inspection results. Our team is trained by major manufacturers including MAN, Wärtsilä, and Caterpillar.
                 </p>
 
                 <p className="text-lg">
-                  Every component undergoes rigorous quality verification and comes with complete
-                  certification documentation, manufacturer warranties, and material traceability
-                  reports for your records and classification society requirements.
+                  Every inspection includes detailed technical documentation with photographic evidence, measurement data, comparative analysis, and actionable recommendations to maintain optimal vessel performance and compliance with classification society requirements.
                 </p>
               </div>
             </div>
 
             {/* Right: Image */}
             <div className="relative">
-              {/* TODO: Replace with real image: /images/engine-parts.jpg */}
+              {/* TODO: Replace with real image: /images/inspection-equipment.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1565630916779-e303be97bc8d?q=80&w=2070"
-                  alt="Marine engine spare parts"
+                  src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070"
+                  alt="Marine engineering inspection equipment"
                   className="w-full h-[500px] object-cover"
                 />
               </div>
@@ -250,11 +242,11 @@ export default function MarineSpareParts() {
               <div className="absolute -bottom-8 -left-8 bg-navy text-white p-6 rounded-corporate-lg shadow-corporate-xl">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 bg-gold/20 rounded-corporate flex items-center justify-center">
-                    <Package className="text-gold" size={32} />
+                    <FileSearch className="text-gold" size={32} />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-gold">10,000+</div>
-                    <div className="text-sm text-gray-300">Parts Delivered</div>
+                    <div className="text-3xl font-bold text-gold">1,000+</div>
+                    <div className="text-sm text-gray-300">Inspections Completed</div>
                   </div>
                 </div>
               </div>
@@ -263,26 +255,25 @@ export default function MarineSpareParts() {
         </div>
       </section>
 
-      {/* 3. CATEGORIES OF PARTS WE SUPPLY */}
+      {/* 3. INSPECTION CATEGORIES */}
       <section className="py-20 lg:py-28 bg-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
             <div className="inline-block bg-navy/10 text-navy px-4 py-2 rounded-corporate font-semibold text-sm mb-4">
-              Parts Inventory
+              Service Offerings
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6">
-              Complete Range of Marine Spares
+              Comprehensive Inspection Services
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              From critical engine components to specialized navigation equipment, we source every
-              part your vessel needs.
+              From routine measurements to advanced non-destructive testing, our engineers provide expert inspection services for all marine systems.
             </p>
           </div>
 
           {/* Grid of Categories */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {partCategories.map((category) => {
+            {inspectionCategories.map((category) => {
               const Icon = category.icon;
               return (
                 <div
@@ -313,7 +304,7 @@ export default function MarineSpareParts() {
               How We Work
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              A streamlined 4-step process ensures fast, reliable delivery of quality marine parts.
+              A systematic 4-step process ensures thorough, professional inspections with detailed documentation.
             </p>
           </div>
 
@@ -354,60 +345,60 @@ export default function MarineSpareParts() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
-              Quality Assurance & Logistics
+              Professional Inspection Services
             </h2>
             <p className="text-lg text-gray-700">
-              Professional handling from warehouse to vessel delivery.
+              Expert marine engineers using precision equipment for accurate results.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Image 1 */}
-            {/* TODO: Replace with real image: /images/spares-1.jpg */}
+            {/* TODO: Replace with real image: /images/inspection-1.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070"
-                alt="Spare parts warehouse"
+                src="https://images.unsplash.com/photo-1581092918484-8313e1f7e8c6?q=80&w=2070"
+                alt="Precision measurement equipment"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
               <div className="bg-white p-4">
-                <h4 className="font-bold text-navy">Organized Warehouse</h4>
-                <p className="text-sm text-gray-600">Climate-controlled parts storage</p>
+                <h4 className="font-bold text-navy">Precision Measurements</h4>
+                <p className="text-sm text-gray-600">Calibrated instruments & tools</p>
               </div>
             </div>
 
             {/* Image 2 */}
-            {/* TODO: Replace with real image: /images/spares-2.jpg */}
+            {/* TODO: Replace with real image: /images/inspection-2.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092583537-20d51b4b4f1b?q=80&w=2070"
-                alt="Technical inspection"
+                src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?q=80&w=2070"
+                alt="Engine inspection process"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
               <div className="bg-white p-4">
-                <h4 className="font-bold text-navy">Quality Inspection</h4>
-                <p className="text-sm text-gray-600">Rigorous verification process</p>
+                <h4 className="font-bold text-navy">Engine Inspections</h4>
+                <p className="text-sm text-gray-600">Comprehensive diagnostics</p>
               </div>
             </div>
 
             {/* Image 3 */}
-            {/* TODO: Replace with real image: /images/spares-3.jpg */}
+            {/* TODO: Replace with real image: /images/inspection-3.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070"
-                alt="Packed parts ready for delivery"
+                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070"
+                alt="Technical documentation and reporting"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
               <div className="bg-white p-4">
-                <h4 className="font-bold text-navy">Ready for Delivery</h4>
-                <p className="text-sm text-gray-600">Secure packaging & documentation</p>
+                <h4 className="font-bold text-navy">Detailed Reporting</h4>
+                <p className="text-sm text-gray-600">Complete technical documentation</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6. WHY CHOOSE AMG FOR SPARE PARTS */}
+      {/* 6. WHY CHOOSE AMG FOR INSPECTIONS */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -417,11 +408,10 @@ export default function MarineSpareParts() {
                 Why Choose AMG
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6">
-                Your Trusted Marine Parts Partner
+                Your Trusted Inspection Partner
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                With decades of maritime industry experience and a commitment to excellence, AMG
-                delivers the reliability and quality your vessel operations demand.
+                With decades of marine engineering experience and commitment to precision, AMG delivers the reliable inspection services your vessel operations demand.
               </p>
             </div>
 
@@ -456,30 +446,29 @@ export default function MarineSpareParts() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Need Spare Parts Urgently?
+            Need a Professional Inspection?
           </h2>
           <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-            Our operations team provides 24/7 support for vessels transiting the Suez Canal and
-            docked at Egyptian ports. Get your critical parts delivered fast.
+            Our certified marine engineers provide thorough inspections with detailed reporting. Schedule your inspection today for vessels in Egyptian ports or Suez Canal.
           </p>
 
           <button
             onClick={scrollToContact}
             className="bg-gold hover:bg-gold-light text-navy font-bold px-12 py-5 rounded-corporate-lg transition-all duration-300 shadow-corporate-xl hover:scale-105 text-lg"
           >
-            Get a Quotation Now
+            Schedule Inspection Now
           </button>
 
           {/* Quick Contact Info */}
           <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center text-gray-300">
             <div className="flex items-center gap-2">
               <Phone className="text-gold" size={20} />
-              <span className="font-medium">24/7 Hotline Available</span>
+              <span className="font-medium">24/7 Support Available</span>
             </div>
             <div className="hidden sm:block w-px h-6 bg-gray-600"></div>
             <div className="flex items-center gap-2">
               <Clock className="text-gold" size={20} />
-              <span className="font-medium">Emergency Response Ready</span>
+              <span className="font-medium">Flexible Scheduling</span>
             </div>
           </div>
         </div>
@@ -497,10 +486,10 @@ export default function MarineSpareParts() {
               <div>
                 <h4 className="font-bold text-navy mb-1">Email Us</h4>
                 <a
-                  href="mailto:spares@armadamarine.com"
+                  href="mailto:inspections@armadamarine.com"
                   className="text-gray-700 hover:text-gold transition-colors"
                 >
-                  spares@armadamarine.com
+                  inspections@armadamarine.com
                 </a>
               </div>
             </div>
