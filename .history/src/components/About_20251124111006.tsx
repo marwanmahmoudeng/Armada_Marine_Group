@@ -1,10 +1,10 @@
-import { Ship, MapPin, Clock } from "lucide-react";
-import { GiIronHulledWarship } from "react-icons/gi";
+import { Ship, Anchor, MapPin, Clock } from "lucide-react";
+
 export default function About() {
   const stats = [
     { label: "Years of Expertise", value: "15+", icon: Clock },
     { label: "Vessels Supported", value: "800+", icon: Ship },
-    { label: "Ports Covered", value: "12+", icon: GiIronHulledWarship },
+    { label: "Ports Covered", value: "12+", icon: Anchor },
     { label: "Response Time", value: "24/7", icon: MapPin },
   ];
 

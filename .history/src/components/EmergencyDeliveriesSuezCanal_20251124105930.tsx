@@ -149,6 +149,7 @@ export default function EmergencyDeliveriesSuezCanal() {
   const handleEmergencyEmail = () => {
     window.location.href = "mailto:emergency@armadamarine.com?subject=Emergency%20Delivery%20Request";
   };
+
   return (
     <div className="bg-white">
       {/* 1. HERO SECTION */}

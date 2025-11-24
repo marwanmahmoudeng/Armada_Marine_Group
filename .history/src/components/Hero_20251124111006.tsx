@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { GiIronHulledWarship } from "react-icons/gi";
+import { Anchor } from "lucide-react";
+
 export default function Hero() {
   const [offset, setOffset] = useState(0);
   const rafRef = useRef<number | null>(null);
@@ -70,7 +71,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy"
     >
-      {/* Background Video */}
+      {/* TODO: replace with real image path: e.g. /images/hero-ship-suez.jpg */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0"
@@ -80,16 +81,13 @@ export default function Hero() {
           transition: "opacity 120ms linear",
         }}
       >
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src="/videos/hero-ship.webm" type="video/webm" />
-          <source src="/videos/hero-ship.mp4" type="video/mp4" />
-        </video>
+        <div
+          className="h-full w-full bg-cover bg-center"
+          style={{
+            backgroundImage: `url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"%3E%3Crect fill="%230A2540" width="1920" height="1080"/%3E%3C/svg%3E')`,
+          }}
+        />
+
         <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/90" />
         <div className="absolute inset-0 ring-1 ring-black/10 [box-shadow:inset_0_0_200px_rgba(0,0,0,0.55)]" />
       </div>
@@ -106,7 +104,7 @@ export default function Hero() {
         {/* Small label */}
         <div className="flex justify-center mb-6 sm:mb-8">
           <div className="bg-gold/10 backdrop-blur-sm border border-gold/30 px-5 sm:px-6 py-2.5 rounded-corporate-lg inline-flex items-center space-x-2 shadow-corporate">
-            <GiIronHulledWarship className="text-gold" size={20} />
+            <Anchor className="text-gold" size={20} />
             <span className="text-gold font-semibold text-sm tracking-wider uppercase">
               Your Suez Canal Maritime Partner
             </span>

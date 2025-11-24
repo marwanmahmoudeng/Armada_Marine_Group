@@ -1,26 +1,6 @@
-import { Ship, Factory,Anchor, Wrench, Building2, Globe, Award } from "lucide-react";
-import { GiIronHulledWarship} from "react-icons/gi";
-import { PiShippingContainerBold } from "react-icons/pi";
-import { useEffect, useState, useRef } from "react";
-import egyptImage from "../assets/who-we-serve-bg.png";
+import { Ship, Anchor, Factory, Wrench, Building2, Globe, Award } from "lucide-react";
 
 export default function ClientsPartners() {
-  const [scrollY, setScrollY] = useState(0);
-  const sectionRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        const scrollProgress = -rect.top / (rect.height + window.innerHeight);
-        setScrollY(scrollProgress * 100);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
   const clientTypes = [
     {
       icon: Ship,
@@ -28,12 +8,12 @@ export default function ClientsPartners() {
       description: "Global and regional container vessel operators requiring reliable spare parts and technical support.",
     },
     {
-      icon: GiIronHulledWarship,
+      icon: Anchor,
       title: "Tanker & Bulk Carrier Operators",
       description: "Oil tankers, chemical carriers, and bulk cargo vessel owners and management companies.",
     },
     {
-      icon: PiShippingContainerBold,
+      icon: Ship,
       title: "Container Vessel Operators",
       description: "Liner services and container shipping fleets transiting the Suez Canal region.",
     },
@@ -92,40 +72,17 @@ export default function ClientsPartners() {
   ];
 
   return (
-    
-    <section
-      ref={sectionRef}
-      id="clients"
-      className="relative py-20 lg:py-24 overflow-hidden"
-    >
-      {/* Parallax Background with Egypt Image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          transform: `translateY(${scrollY * 6}px)`,
-          transition: "transform 0.1s linear",
-        }}
-      >
-        <img
-          src={egyptImage}
-          alt="Egypt maritime - Suez Canal"
-          className="w-full h-[100%] object-cover"
-          
-        />
-        {/* Subtle vignette for text readability - much lighter overlay */}
-        <div className="absolute inset-0 ring-1 ring-black/10 [box-shadow:inset_0_0_200px_rgba(0,0,0,0.55)]" />
-      </div>
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="clients" className="py-20 lg:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-navy/20 backdrop-blur-sm text-navy px-4 py-2 rounded-corporate font-semibold text-sm mb-4">
+          <div className="inline-block bg-navy/10 text-navy px-4 py-2 rounded-corporate font-semibold text-sm mb-4">
             Clients & Partners
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-6 drop-shadow-sm">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-6">
             Who We Serve
           </h2>
-          <p className="text-base sm:text-lg text-gray-800 max-w-3xl mx-auto leading-relaxed drop-shadow-sm">
+          <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
             AMG proudly serves a diverse range of maritime clients, from global shipping companies
             to local port operators, all trusting us for quality, speed, and technical excellence.
           </p>
@@ -138,7 +95,7 @@ export default function ClientsPartners() {
             return (
               <div
                 key={index}
-                className="bg-white/70 backdrop-blur-sm rounded-corporate-lg p-6 shadow-corporate border border-gray-200/50 hover:shadow-corporate-lg hover:border-navy/20 transition-all duration-300"
+                className="bg-gradient-to-br from-light to-white rounded-corporate-lg p-6 shadow-corporate border border-gray-200/50 hover:shadow-corporate-lg hover:border-navy/20 transition-all duration-300"
               >
                 <div className="flex justify-center mb-4">
                   <div className="w-14 h-14 rounded-corporate bg-navy/10 flex items-center justify-center">
@@ -157,7 +114,7 @@ export default function ClientsPartners() {
         </div>
 
         {/* Strategic Partnerships */}
-        <div className="bg-white/70 backdrop-blur-md rounded-corporate-lg p-10 lg:p-12 border border-navy/20 shadow-corporate-lg">
+        <div className="bg-gradient-to-br from-navy/5 to-gold/5 rounded-corporate-lg p-10 lg:p-12 border border-navy/10">
           <div className="text-center mb-12">
             <h3 className="text-2xl sm:text-3xl font-bold text-navy mb-4">
               Current Strategic Focus
@@ -172,7 +129,7 @@ export default function ClientsPartners() {
             {partnershipAreas.map((area) => (
               <div
                 key={area}
-                className="bg-navy/10 rounded-corporate p-4 shadow-corporate text-center border border-gray-200/50 hover:border-gold/40 transition-all"
+                className="bg-white rounded-corporate p-4 shadow-corporate text-center border border-gray-200/50 hover:border-gold/40 transition-all"
               >
                 <span className="text-navy font-semibold text-xs block">
                   {area}
@@ -192,8 +149,8 @@ export default function ClientsPartners() {
                 return (
                   <div key={reason.title} className="text-center">
                     <div className="flex justify-center mb-4">
-                      <div className="w-16 h-16 rounded-corporate bg-gradient-to-br from-navy/10 to-navy/10 flex items-center justify-center">
-                        <Icon className="text-navy" size={28} />
+                      <div className="w-16 h-16 rounded-corporate bg-gradient-to-br from-navy to-navy-light flex items-center justify-center">
+                        <Icon className="text-gold" size={28} />
                       </div>
                     </div>
                     <h5 className="text-lg font-bold text-navy mb-2">
@@ -211,7 +168,7 @@ export default function ClientsPartners() {
 
         {/* CTA */}
         <div className="mt-16 text-center">
-          <p className="text-gray-500 text-lg mb-6">
+          <p className="text-gray-700 text-lg mb-6">
             Interested in partnering with AMG or learning more about our client services?
           </p>
           <button
