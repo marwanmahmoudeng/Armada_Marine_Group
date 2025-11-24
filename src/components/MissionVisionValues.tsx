@@ -60,60 +60,38 @@ export default function MissionVisionValues() {
         {/* Mission & Vision Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Mission */}
-          <div className="group relative rounded-corporate-lg overflow-hidden shadow-corporate-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-            {/* Background Image */}
-            <div className="absolute inset-0">
-              <img
-                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070"
-                alt="Mission background"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/90 to-navy/85"></div>
+          <div className="rounded-corporate-lg bg-white/5 backdrop-blur-sm border border-white/10 p-8 lg:p-10 shadow-corporate-xl hover:bg-white/10 hover:border-gold/30 transition-all duration-300">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 rounded-corporate bg-gold/20 flex items-center justify-center">
+                <Target className="text-gold" size={32} />
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white">Our Mission</h3>
             </div>
 
-            {/* Content */}
-            <div className="relative p-8 lg:p-10">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 rounded-corporate bg-gold/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-gold/30 transition-colors">
-                  <Target className="text-gold" size={32} />
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white">Our Mission</h3>
-              </div>
-              <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
-                To deliver high-quality marine supplies and technical solutions with exceptional speed, reliability,
-                and adherence to global standards. We are committed to being the most trusted partner for vessels
-                operating in Egyptian waters and the Suez Canal region.
-              </p>
-            </div>
+            <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+              To deliver high-quality marine supplies and technical solutions with exceptional speed,
+              reliability, and adherence to global standards. We are committed to being the most trusted
+              partner for vessels operating in Egyptian waters and the Suez Canal region.
+            </p>
           </div>
+
 
           {/* Vision */}
-          <div className="group relative rounded-corporate-lg overflow-hidden shadow-corporate-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-            {/* Background Image */}
-            <div className="absolute inset-0">
-              <img
-                src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?q=80&w=2070"
-                alt="Vision background"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/90 to-navy/85"></div>
+          <div className="rounded-corporate-lg bg-white/5 backdrop-blur-sm border border-white/10 p-8 lg:p-10 shadow-corporate-xl hover:bg-white/10 hover:border-gold/30 transition-all duration-300">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 rounded-corporate bg-gold/20 flex items-center justify-center">
+                <Eye className="text-gold" size={32} />
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white">Our Vision</h3>
             </div>
 
-            {/* Content */}
-            <div className="relative p-8 lg:p-10">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 rounded-corporate bg-gold/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-gold/30 transition-colors">
-                  <Eye className="text-gold" size={32} />
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white">Our Vision</h3>
-              </div>
-              <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
-                To become the leading marine service provider in the Middle East and a globally recognized partner
-                for maritime companies utilizing the Suez Canal route, known for innovation, reliability, and
-                unmatched technical expertise.
-              </p>
-            </div>
+            <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+              To become the leading marine service provider in the Middle East and a globally recognized
+              partner for maritime companies utilizing the Suez Canal route, known for innovation,
+              reliability, and unmatched technical expertise.
+            </p>
           </div>
+
         </div>
 
         {/* Values */}

@@ -103,14 +103,22 @@ export default function MapContactSection() {
           </div>
         </div>
 
-        {/* Map Placeholder */}
-        <div className="mt-12 rounded-corporate-lg overflow-hidden shadow-corporate-lg h-64 bg-gray-300">
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-navy/20 to-gold/20">
-            <div className="text-center">
-              <MapPin className="text-navy mx-auto mb-2" size={48} />
-              <p className="text-navy font-semibold">Interactive Map</p>
-              <p className="text-gray-600 text-sm">Suez Canal Region, Egypt</p>
-            </div>
+        {/* Interactive Map */}
+        <div className="mt-12 rounded-3xl overflow-hidden shadow-lg bg-gradient-to-br from-navy/10 to-gold/10 p-6">
+          <div className="text-center mb-6">
+            <MapPin className="text-navy mx-auto mb-3" size={48} />
+            <h3 className="text-2xl font-bold text-navy mb-2">Interactive Map</h3>
+            <p className="text-gray-600 text-lg">Alexandria, Egypt</p>
+          </div>
+          <div className="rounded-3xl overflow-hidden shadow-lg w-full h-[380px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d220052.58223677374!2d29.738449315625!3d31.200092399999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5c49126710fd3%3A0xb4e0cda629ee6bb9!2sAlexandria%2C%20Egypt!5e0!3m2!1sen!2seg!4v1234567890123!5m2!1sen!2seg"
+              className="w-full h-full border-0"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Alexandria, Egypt"
+            ></iframe>
           </div>
         </div>
       </div>

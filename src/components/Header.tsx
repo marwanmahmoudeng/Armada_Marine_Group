@@ -29,6 +29,9 @@ export default function Header({ activeSection }: HeaderProps) {
   const openTimeoutRef = useRef<number | null>(null);
   const closeTimeoutRef = useRef<number | null>(null);
 
+  // Ref to prevent scroll detection from interfering with manual clicks
+  const isManualScrollRef = useRef(false);
+
   const navItems: Array<{ id: Section; label: string; hasDropdown?: boolean }> = [
     { id: "home", label: "Home" },
     { id: "services", label: "Services", hasDropdown: true },
@@ -92,6 +95,9 @@ export default function Header({ activeSection }: HeaderProps) {
         setCurrentSection(sectionId);
       }
 
+      // Disable scroll detection temporarily
+      isManualScrollRef.current = true;
+
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -99,6 +105,11 @@ export default function Header({ activeSection }: HeaderProps) {
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - offset;
           window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+
+          // Re-enable scroll detection after smooth scroll completes
+          setTimeout(() => {
+            isManualScrollRef.current = false;
+          }, 1000);
         }
       }, 100);
     }
@@ -165,6 +176,80 @@ export default function Header({ activeSection }: HeaderProps) {
     };
   }, []);
 
+  // ====================================================
+  // SCROLLSPY: Simple scroll-based detection
+  // ====================================================
+  useEffect(() => {
+    // Only run on homepage
+    if (pathname !== "/") return;
+
+    const handleScroll = () => {
+      // Don't update if user just clicked a nav item
+      if (isManualScrollRef.current) return;
+
+      // Get current scroll position (add offset for header)
+      const scrollPosition = window.scrollY + 100;
+
+      // Define all sections and their corresponding navbar items
+      // Sections not in navbar (mission, capabilities, clients) map to "about"
+      const sectionMapping: Record<string, Section> = {
+        "home": "home",
+        "services": "services",
+        "about": "about",
+        "mission": "about",        // Mission belongs to about section
+        "capabilities": "about",   // Capabilities belongs to about section
+        "clients": "about",        // Clients belongs to about section
+        "why-choose-us": "why-choose-us",
+        "contact": "contact",
+      };
+
+      // Get all page sections in order
+      const allSections = ["home", "services", "about", "mission", "capabilities", "clients", "why-choose-us", "contact"];
+
+      let activeSection: Section = "home";
+
+      // Find which section we're currently in
+      for (let i = allSections.length - 1; i >= 0; i--) {
+        const sectionId = allSections[i];
+        const element = document.getElementById(sectionId);
+
+        if (element) {
+          const sectionTop = element.offsetTop;
+
+          // If we've scrolled past this section, it's the active one
+          if (scrollPosition >= sectionTop) {
+            // Map to the corresponding navbar section
+            activeSection = sectionMapping[sectionId] || "home";
+            break;
+          }
+        }
+      }
+
+      setCurrentSection(activeSection);
+    };
+
+    // Initial check
+    handleScroll();
+
+    // Listen to scroll events (throttled for performance)
+    let ticking = false;
+    const scrollListener = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", scrollListener, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", scrollListener);
+    };
+  }, [pathname]);
+
   const scrollToSection = (sectionId: Section) => {
     setIsMobileMenuOpen(false);
 
@@ -172,6 +257,9 @@ export default function Header({ activeSection }: HeaderProps) {
     // SET ACTIVE SECTION WHEN USER CLICKS
     // ====================================================
     setCurrentSection(sectionId);
+
+    // Disable scroll detection temporarily to prevent interference
+    isManualScrollRef.current = true;
 
     // Check if we're on the homepage
     const isOnHomePage = pathname === "/";
@@ -184,6 +272,11 @@ export default function Header({ activeSection }: HeaderProps) {
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+
+        // Re-enable scroll detection after smooth scroll completes (~800ms)
+        setTimeout(() => {
+          isManualScrollRef.current = false;
+        }, 1000);
       }
     } else {
       // If on a service detail page, navigate to homepage with hash
@@ -196,6 +289,11 @@ export default function Header({ activeSection }: HeaderProps) {
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - offset;
           window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+
+          // Re-enable scroll detection after smooth scroll completes
+          setTimeout(() => {
+            isManualScrollRef.current = false;
+          }, 1000);
         }
       }, 100);
     }
