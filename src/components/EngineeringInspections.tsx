@@ -19,7 +19,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import MapContactSection from "./MapContactSection";
-import background from "../assets/documentation.jfif";
+import background from "../assets/background_ei.png";
 import equipment from "../assets/equipment.png";
 import Precision from "../assets/Precision.png";
 import Engine from "../assets/Engine.png";

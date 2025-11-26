@@ -1,13 +1,29 @@
-import { Ship, Factory,Anchor, Wrench, Building2, Globe, Award } from "lucide-react";
-import { GiIronHulledWarship} from "react-icons/gi";
+import { Ship, Factory, Anchor, Wrench, Building2, Globe, Award } from "lucide-react";
+import { GiIronHulledWarship } from "react-icons/gi";
 import { PiShippingContainerBold } from "react-icons/pi";
 import { useEffect, useState, useRef } from "react";
-import egyptImage from "../assets/who-we-serve-bg.png";
+import egyptImagemobile from "../assets/mobile.webp";
+import egyptImagedesktop from "../assets/desktop.webp";
 
 export default function ClientsPartners() {
   const [scrollY, setScrollY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
 
+  // detect mobile vs desktop
+  useEffect(() => {
+    const updateIsMobile = () => {
+      if (typeof window !== "undefined") {
+        setIsMobile(window.innerWidth < 768); // أقل من md = موبايل
+      }
+    };
+
+    updateIsMobile();
+    window.addEventListener("resize", updateIsMobile);
+    return () => window.removeEventListener("resize", updateIsMobile);
+  }, []);
+
+  // parallax scroll
   useEffect(() => {
     const handleScroll = () => {
       if (sectionRef.current) {
@@ -21,46 +37,57 @@ export default function ClientsPartners() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const bgImage = isMobile ? egyptImagemobile : egyptImagedesktop;
+
   const clientTypes = [
     {
       icon: Ship,
       title: "Container Shipping Companies",
-      description: "Global and regional container vessel operators requiring reliable spare parts and technical support.",
+      description:
+        "Global and regional container vessel operators requiring reliable spare parts and technical support.",
     },
     {
       icon: GiIronHulledWarship,
       title: "Tanker & Bulk Carrier Operators",
-      description: "Oil tankers, chemical carriers, and bulk cargo vessel owners and management companies.",
+      description:
+        "Oil tankers, chemical carriers, and bulk cargo vessel owners and management companies.",
     },
     {
       icon: PiShippingContainerBold,
       title: "Container Vessel Operators",
-      description: "Liner services and container shipping fleets transiting the Suez Canal region.",
+      description:
+        "Liner services and container shipping fleets transiting the Suez Canal region.",
     },
     {
       icon: Building2,
       title: "Offshore Support Vessels",
-      description: "OSV operators, platform supply vessels, and offshore construction support ships.",
+      description:
+        "OSV operators, platform supply vessels, and offshore construction support ships.",
     },
     {
       icon: Anchor,
       title: "Tugboats & Port Service Vessels",
-      description: "Harbor tugs, pilot boats, and port authority service vessels across Egyptian waters.",
+      description:
+        "Harbor tugs, pilot boats, and port authority service vessels across Egyptian waters.",
     },
     {
       icon: Wrench,
       title: "Ship Management Companies",
-      description: "Third-party ship managers overseeing technical operations for vessel owners.",
+      description:
+        "Third-party ship managers overseeing technical operations for vessel owners.",
     },
     {
       icon: Factory,
       title: "Shipyards & Repair Yards",
-      description: "Dry docks and shipyards requiring quality parts and technical consultancy services.",
+      description:
+        "Dry docks and shipyards requiring quality parts and technical consultancy services.",
     },
     {
       icon: Globe,
       title: "Global Marine Solution Providers",
-      description: "International marine service companies seeking local partners in the Suez Canal region.",
+      description:
+        "International marine service companies seeking local partners in the Suez Canal region.",
     },
   ];
 
@@ -92,13 +119,12 @@ export default function ClientsPartners() {
   ];
 
   return (
-    
     <section
       ref={sectionRef}
       id="clients"
       className="relative py-20 lg:py-24 overflow-hidden"
     >
-      {/* Parallax Background with Egypt Image */}
+      {/* Parallax Background */}
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -107,15 +133,14 @@ export default function ClientsPartners() {
         }}
       >
         <img
-          src={egyptImage}
+          src={bgImage}
           alt="Egypt maritime - Suez Canal"
-          className="w-full h-[100%] object-cover"
-          
+          className="w-full h-full object-cover object-center"
         />
-        {/* Subtle vignette for text readability - much lighter overlay */}
         <div className="absolute inset-0 ring-1 ring-black/10 [box-shadow:inset_0_0_200px_rgba(0,0,0,0.55)]" />
       </div>
-      
+
+      {/* CONTENT */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -172,15 +197,14 @@ export default function ClientsPartners() {
             {partnershipAreas.map((area) => (
               <div
                 key={area}
-                className="bg-navy/10 rounded-corporate p-4 shadow-corporate text-center border border-gray-200/50 hover:border-gold/40 transition-all"
+                className="bg-navy/10 rounded-corporate px-4 py-5 shadow-corporate text-center border border-gray-200/50 hover:border-gold/40 transition-all min-w-[140px]"
               >
-                <span className="text-navy font-semibold text-xs block">
+                <span className="text-navy font-semibold text-sm leading-tight block">
                   {area}
                 </span>
               </div>
             ))}
           </div>
-
           {/* Why Partners Work With Us */}
           <div className="pt-10 border-t border-navy/10">
             <h4 className="text-xl sm:text-2xl font-bold text-navy text-center mb-8">
@@ -219,7 +243,8 @@ export default function ClientsPartners() {
               const element = document.getElementById("contact");
               if (element) {
                 const headerOffset = 80;
-                const y = element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                const y =
+                  element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
                 window.scrollTo({ top: y, behavior: "smooth" });
               }
             }}
