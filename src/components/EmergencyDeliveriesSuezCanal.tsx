@@ -151,7 +151,7 @@ export default function EmergencyDeliveriesSuezCanal() {
   };
 
   const handleEmergencyEmail = () => {
-    window.location.href = "mailto:emergency@armadamarine.com?subject=Emergency%20Delivery%20Request";
+    window.location.href = "mailto:info@armadamarinegroup.com?subject=Emergency%20Delivery%20Request";
   };
   return (
     <div className="bg-white">
@@ -524,8 +524,8 @@ export default function EmergencyDeliveriesSuezCanal() {
               <Mail className="text-white" size={20} />
               <div className="text-left">
                 <p className="text-xs opacity-80">Emergency Email</p>
-                <a href="mailto:emergency@armadamarine.com" className="font-bold text-white hover:text-gold transition-colors">
-                  emergency@armadamarine.com
+                <a href="mailto:info@armadamarinegroup.com" className="font-bold text-white hover:text-gold transition-colors">
+                  info@armadamarinegroup.com
                 </a>
               </div>
             </div>

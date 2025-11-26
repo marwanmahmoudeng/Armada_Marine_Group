@@ -150,11 +150,11 @@ export default function ImportExportServices() {
   };
 
   const handleTradeInquiry = () => {
-    window.location.href = "mailto:trade@armadamarine.com?subject=Import%2FExport%20Inquiry";
+    window.location.href = "mailto:info@armadamarinegroup.com?subject=Import%2FExport%20Inquiry";
   };
 
   const handleContactTradeDeskEmail = () => {
-    window.location.href = "mailto:trade@armadamarine.com";
+    window.location.href = "mailto:info@armadamarinegroup.com";
   };
 
   const handleContactTradeDeskPhone = () => {

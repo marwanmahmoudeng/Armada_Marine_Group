@@ -152,15 +152,15 @@ export default function LocalManufacturingSolutions() {
   };
 
   const handleRegisterInterest = () => {
-    window.location.href = "mailto:info@armadamarine.com?subject=Local%20Manufacturing%20Inquiry";
+    window.location.href = "mailto:info@armadamarinegroup.com?subject=Local%20Manufacturing%20Inquiry";
   };
 
   const handleDiscussPartnership = () => {
-    window.location.href = "mailto:partnerships@armadamarine.com?subject=Manufacturing%20Partnership%20Inquiry";
+    window.location.href = "mailto:info@armadamarinegroup.com?subject=Manufacturing%20Partnership%20Inquiry";
   };
 
   const handleContactEmail = () => {
-    window.location.href = "mailto:info@armadamarine.com";
+    window.location.href = "mailto:info@armadamarinegroup.com";
   };
 
   const handleContactPhone = () => {

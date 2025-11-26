@@ -151,11 +151,11 @@ export default function MarineEquipmentSourcing() {
   };
 
   const handleEquipmentInquiry = () => {
-    window.location.href = "mailto:supply@armadamarine.com?subject=Equipment%20Sourcing%20Inquiry";
+    window.location.href = "mailto:info@armadamarinegroup.com?subject=Equipment%20Sourcing%20Inquiry";
   };
 
   const handleContactSupplyDeskEmail = () => {
-    window.location.href = "mailto:supply@armadamarine.com";
+    window.location.href = "mailto:info@armadamarinegroup.com";
   };
 
   const handleContactSupplyDeskPhone = () => {

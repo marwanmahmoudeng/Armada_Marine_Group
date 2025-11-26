@@ -14,7 +14,7 @@ export const SOCIAL_LINKS = {
  */
 export const CONTACT_INFO = {
   phone: "+20 101 906 2754",
-  email: "armadamarinegroup@gmail.com",
-  emergencyEmail: "emergency@armadamarinegroup.com",
+  email: "info@armadamarinegroup.com",
+  emergencyEmail: "info@armadamarinegroup.com",
   address: "Alexandria, Egypt",
 } as const;
