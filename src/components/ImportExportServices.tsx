@@ -11,10 +11,8 @@ import {
   TrendingUp,
   Plane,
   Truck,
-  MapPin,
   Phone,
   Mail,
-  Globe2,
   FileCheck,
   Building2,
   BadgeCheck,
@@ -23,7 +21,12 @@ import {
   Container,
   ClipboardCheck,
 } from "lucide-react";
-
+import MapContactSection from "./MapContactSection";
+import background from "../assets/Packed.jfif";
+import main from "../assets/main_i.jfif";
+import one from "../assets/one_i.png";
+import two from "../assets/two_i.png";
+import three from "../assets/three_i.png";
 type ImportExportFeature = {
   icon: any;
   title: string;
@@ -125,7 +128,7 @@ export default function ImportExportServices() {
       text: "Full compliance with Egyptian and international trade regulations",
     },
     {
-      icon: Globe2,
+      icon: Globe,
       text: "Established relationships with global suppliers and local authorities",
     },
     {
@@ -147,11 +150,11 @@ export default function ImportExportServices() {
   };
 
   const handleTradeInquiry = () => {
-    window.location.href = "mailto:trade@armadamarine.com?subject=Import%2FExport%20Inquiry";
+    window.location.href = "mailto:info@armadamarinegroup.com?subject=Import%2FExport%20Inquiry";
   };
 
   const handleContactTradeDeskEmail = () => {
-    window.location.href = "mailto:trade@armadamarine.com";
+    window.location.href = "mailto:info@armadamarinegroup.com";
   };
 
   const handleContactTradeDeskPhone = () => {
@@ -167,7 +170,7 @@ export default function ImportExportServices() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070')",
+            backgroundImage: `url(${background})`,
           }}
         >
           {/* Dark Overlay */}
@@ -250,7 +253,7 @@ export default function ImportExportServices() {
               {/* TODO: Replace with real image: /images/imex-docs.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070"
+                  src={main}
                   alt="Import export documentation and logistics planning"
                   className="w-full h-[500px] object-cover"
                 />
@@ -375,7 +378,7 @@ export default function ImportExportServices() {
             {/* TODO: Replace with real images */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070"
+                src={one}
                 alt="Sea freight and maritime logistics"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -391,7 +394,7 @@ export default function ImportExportServices() {
             {/* Service Image 2 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070"
+                src={two}
                 alt="Customs documentation and clearance"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -407,7 +410,7 @@ export default function ImportExportServices() {
             {/* Service Image 3 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070"
+                src={three}
                 alt="Port logistics and cargo handling"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -499,107 +502,8 @@ export default function ImportExportServices() {
         </div>
       </section>
 
-      {/* 8. CONTACT FOOTER BLOCK */}
-      <section className="py-16 bg-light border-t border-gray-300">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Email */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <Mail className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Email Us</h4>
-                <a
-                  href="mailto:trade@armadamarine.com"
-                  className="text-gray-700 hover:text-gold transition-colors"
-                >
-                  trade@armadamarine.com
-                </a>
-              </div>
-            </div>
-
-            {/* Phone */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <Phone className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Call Trade Desk</h4>
-                <a
-                  href="tel:+201019062754"
-                  className="text-gray-700 hover:text-gold transition-colors"
-                >
-                  +20 101 906 2754
-                </a>
-              </div>
-            </div>
-
-            {/* Location */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <MapPin className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Location</h4>
-                <p className="text-gray-700">
-                  Suez, Egypt
-                  <br />
-                  Near Suez Canal
-                </p>
-              </div>
-            </div>
-
-            {/* Social */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <Globe2 className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Follow Us</h4>
-                <div className="flex gap-3 mt-2">
-                  <a
-                    href="#"
-                    className="w-8 h-8 bg-navy/10 hover:bg-navy rounded-full flex items-center justify-center transition-colors group"
-                  >
-                    <span className="text-navy group-hover:text-gold transition-colors text-sm font-bold">
-                      f
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="w-8 h-8 bg-navy/10 hover:bg-navy rounded-full flex items-center justify-center transition-colors group"
-                  >
-                    <span className="text-navy group-hover:text-gold transition-colors text-sm font-bold">
-                      in
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="w-8 h-8 bg-navy/10 hover:bg-navy rounded-full flex items-center justify-center transition-colors group"
-                  >
-                    <span className="text-navy group-hover:text-gold transition-colors text-sm font-bold">
-                      X
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Map Placeholder */}
-          <div className="mt-12 rounded-corporate-lg overflow-hidden shadow-corporate-lg h-64 bg-gray-300">
-            {/* TODO: Replace with actual map integration (Google Maps / Mapbox) */}
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-navy/20 to-gold/20">
-              <div className="text-center">
-                <MapPin className="text-navy mx-auto mb-2" size={48} />
-                <p className="text-navy font-semibold">Interactive Map</p>
-                <p className="text-gray-600 text-sm">Suez Canal Region, Egypt</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Contact & Map Section */}
+      <MapContactSection />
     </div>
   );
 }

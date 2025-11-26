@@ -5,14 +5,13 @@ import {
   Shield,
   Search,
   CheckCircle2,
+  Globe2,
   Globe,
+  Mail,
   Clock,
   Users,
   TrendingUp,
   Phone,
-  Mail,
-  MapPin,
-  Globe2,
   BadgeCheck,
   FileCheck,
   Anchor,
@@ -23,7 +22,12 @@ import {
   Award,
   Target,
 } from "lucide-react";
-
+import MapContactSection from "./MapContactSection";
+import background from "../assets/background_eq.jfif";
+import main from "../assets/main_eq.jfif";
+import one from "../assets/one_eq.png";
+import two from "../assets/two_eq.png";
+import three from "../assets/three_eq.png";
 type EquipmentFeature = {
   icon: any;
   title: string;
@@ -147,11 +151,11 @@ export default function MarineEquipmentSourcing() {
   };
 
   const handleEquipmentInquiry = () => {
-    window.location.href = "mailto:supply@armadamarine.com?subject=Equipment%20Sourcing%20Inquiry";
+    window.location.href = "mailto:info@armadamarinegroup.com?subject=Equipment%20Sourcing%20Inquiry";
   };
 
   const handleContactSupplyDeskEmail = () => {
-    window.location.href = "mailto:supply@armadamarine.com";
+    window.location.href = "mailto:info@armadamarinegroup.com";
   };
 
   const handleContactSupplyDeskPhone = () => {
@@ -167,7 +171,7 @@ export default function MarineEquipmentSourcing() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=2070')",
+            backgroundImage: `url(${background})`,
           }}
         >
           {/* Dark Overlay */}
@@ -250,7 +254,7 @@ export default function MarineEquipmentSourcing() {
               {/* TODO: Replace with real image: /images/equip-overview.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070"
+                  src={main}
                   alt="Marine equipment warehouse and sourcing"
                   className="w-full h-[500px] object-cover"
                 />
@@ -375,7 +379,7 @@ export default function MarineEquipmentSourcing() {
             {/* TODO: Replace with real images */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070"
+                src={one}
                 alt="Marine machinery and engines"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -391,7 +395,7 @@ export default function MarineEquipmentSourcing() {
             {/* Equipment Image 2 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=2070"
+                src={two}
                 alt="Navigation electronics and instruments"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -407,7 +411,7 @@ export default function MarineEquipmentSourcing() {
             {/* Equipment Image 3 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070"
+                src={three}
                 alt="Safety equipment and deck hardware"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -499,107 +503,8 @@ export default function MarineEquipmentSourcing() {
         </div>
       </section>
 
-      {/* 8. CONTACT FOOTER BLOCK */}
-      <section className="py-16 bg-light border-t border-gray-300">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Email */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <Mail className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Email Us</h4>
-                <a
-                  href="mailto:supply@armadamarine.com"
-                  className="text-gray-700 hover:text-gold transition-colors"
-                >
-                  supply@armadamarine.com
-                </a>
-              </div>
-            </div>
-
-            {/* Phone */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <Phone className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Call Supply Desk</h4>
-                <a
-                  href="tel:+201019062754"
-                  className="text-gray-700 hover:text-gold transition-colors"
-                >
-                  +20 101 906 2754
-                </a>
-              </div>
-            </div>
-
-            {/* Location */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <MapPin className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Location</h4>
-                <p className="text-gray-700">
-                  Suez, Egypt
-                  <br />
-                  Near Suez Canal
-                </p>
-              </div>
-            </div>
-
-            {/* Social */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <Globe2 className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Follow Us</h4>
-                <div className="flex gap-3 mt-2">
-                  <a
-                    href="#"
-                    className="w-8 h-8 bg-navy/10 hover:bg-navy rounded-full flex items-center justify-center transition-colors group"
-                  >
-                    <span className="text-navy group-hover:text-gold transition-colors text-sm font-bold">
-                      f
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="w-8 h-8 bg-navy/10 hover:bg-navy rounded-full flex items-center justify-center transition-colors group"
-                  >
-                    <span className="text-navy group-hover:text-gold transition-colors text-sm font-bold">
-                      in
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="w-8 h-8 bg-navy/10 hover:bg-navy rounded-full flex items-center justify-center transition-colors group"
-                  >
-                    <span className="text-navy group-hover:text-gold transition-colors text-sm font-bold">
-                      X
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Map Placeholder */}
-          <div className="mt-12 rounded-corporate-lg overflow-hidden shadow-corporate-lg h-64 bg-gray-300">
-            {/* TODO: Replace with actual map integration (Google Maps / Mapbox) */}
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-navy/20 to-gold/20">
-              <div className="text-center">
-                <MapPin className="text-navy mx-auto mb-2" size={48} />
-                <p className="text-navy font-semibold">Interactive Map</p>
-                <p className="text-gray-600 text-sm">Suez Canal Region, Egypt</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Contact & Map Section */}
+      <MapContactSection />
     </div>
   );
 }

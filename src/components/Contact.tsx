@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 import logo from "../assets/amg-logo.png";
+import { SOCIAL_LINKS, CONTACT_INFO } from "../config/socialLinks";
 
 const FORMSPREE_URL = "https://formspree.io/f/xkgkgojp";
 const FORM_SUBJECT = "New Message from AMG Website";
@@ -71,19 +72,19 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      value: "armadamarinegroup@gmail.com",
-      link: "mailto:armadamarinegroup@gmail.com",
+      value: CONTACT_INFO.email,
+      link: `mailto:${CONTACT_INFO.email}`,
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+20 1019062754",
-      link: "tel:+201019062754",
+      value: CONTACT_INFO.phone,
+      link: `tel:${CONTACT_INFO.phone.replace(/\s/g, "")}`,
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "Alexandria, Egypt",
+      value: CONTACT_INFO.address,
       link: "https://maps.app.goo.gl/ZyuWv5PJCKem7yN1A",
     },
   ];
@@ -91,14 +92,14 @@ export default function Contact() {
   const socialmedia = [
     {
       icon: BsWhatsapp,
-      link: "https://wa.me/201019062754?text=Hello%20I%20want%20to%20know%20more%20about%20your%20services",
+      link: `${SOCIAL_LINKS.whatsapp}?text=Hello%20I%20want%20to%20know%20more%20about%20your%20services`,
     },
-    { icon: BsInstagram, link: "https://www.instagram.com/armadamarinegroup/" },
+    { icon: BsInstagram, link: SOCIAL_LINKS.instagram },
     {
       icon: Facebook,
-      link: "https://www.facebook.com/profile.php?id=61583461270391",
+      link: SOCIAL_LINKS.facebook,
     },
-    { icon: Linkedin, link: "https://www.linkedin.com/in/armada-marine-group" },
+    { icon: Linkedin, link: SOCIAL_LINKS.linkedin },
   ];
 
   return (
@@ -258,7 +259,7 @@ export default function Contact() {
 
             {/* SOCIAL */}
             <div>
-              <div className="flex justify-center sm:justify-start items-center gap-4 sm:gap-6">
+            <div className="flex justify-center items-center gap-4 sm:gap-6">
                 {socialmedia.map((item, i) => {
                   const Icon = item.icon;
                   return (

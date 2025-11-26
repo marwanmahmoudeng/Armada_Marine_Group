@@ -5,22 +5,25 @@ import {
   Settings,
   Droplet,
   Activity,
+  Globe2,
   Zap,
   Search,
   ShoppingCart,
   ClipboardCheck,
   Truck,
   Phone,
-  Mail,
-  MapPin,
   CheckCircle2,
   Clock,
   Shield,
-  Globe2,
   Users,
   TrendingDown,
 } from "lucide-react";
-
+import MapContactSection from "./MapContactSection";
+import partsImage from "../assets/marine_parts.png";
+import backgroundImage from "../assets/background_parts.png";
+import Packed from "../assets/Packed.jfif";
+import Warehouse from "../assets/Warehouse.jfif";
+import inspection from "../assets/inspection.jfif";
 type PartCategory = {
   icon: any;
   title: string;
@@ -152,7 +155,7 @@ export default function MarineSpareParts() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070')",
+            backgroundImage: `url(${backgroundImage})`,
           }}
         >
           {/* Gradient Overlay */}
@@ -240,7 +243,7 @@ export default function MarineSpareParts() {
               {/* TODO: Replace with real image: /images/engine-parts.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1565630916779-e303be97bc8d?q=80&w=2070"
+                  src= {partsImage}
                   alt="Marine engine spare parts"
                   className="w-full h-[500px] object-cover"
                 />
@@ -366,7 +369,7 @@ export default function MarineSpareParts() {
             {/* TODO: Replace with real image: /images/spares-1.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070"
+                src={Warehouse}
                 alt="Spare parts warehouse"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -380,7 +383,7 @@ export default function MarineSpareParts() {
             {/* TODO: Replace with real image: /images/spares-2.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092583537-20d51b4b4f1b?q=80&w=2070"
+                src={inspection}
                 alt="Technical inspection"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -394,7 +397,7 @@ export default function MarineSpareParts() {
             {/* TODO: Replace with real image: /images/spares-3.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070"
+                src={Packed}
                 alt="Packed parts ready for delivery"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -485,107 +488,8 @@ export default function MarineSpareParts() {
         </div>
       </section>
 
-      {/* 8. CONTACT FOOTER BLOCK */}
-      <section className="py-16 bg-light border-t border-gray-300">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Email */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <Mail className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Email Us</h4>
-                <a
-                  href="mailto:spares@armadamarine.com"
-                  className="text-gray-700 hover:text-gold transition-colors"
-                >
-                  spares@armadamarine.com
-                </a>
-              </div>
-            </div>
-
-            {/* Phone */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <Phone className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Call 24/7</h4>
-                <a
-                  href="tel:+201001234567"
-                  className="text-gray-700 hover:text-gold transition-colors"
-                >
-                  +20 100 123 4567
-                </a>
-              </div>
-            </div>
-
-            {/* Location */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <MapPin className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Location</h4>
-                <p className="text-gray-700">
-                  Suez, Egypt
-                  <br />
-                  Near Suez Canal
-                </p>
-              </div>
-            </div>
-
-            {/* Social */}
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-navy rounded-corporate flex items-center justify-center flex-shrink-0">
-                <Globe2 className="text-gold" size={22} />
-              </div>
-              <div>
-                <h4 className="font-bold text-navy mb-1">Follow Us</h4>
-                <div className="flex gap-3 mt-2">
-                  <a
-                    href="#"
-                    className="w-8 h-8 bg-navy/10 hover:bg-navy rounded-full flex items-center justify-center transition-colors group"
-                  >
-                    <span className="text-navy group-hover:text-gold transition-colors text-sm font-bold">
-                      f
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="w-8 h-8 bg-navy/10 hover:bg-navy rounded-full flex items-center justify-center transition-colors group"
-                  >
-                    <span className="text-navy group-hover:text-gold transition-colors text-sm font-bold">
-                      in
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="w-8 h-8 bg-navy/10 hover:bg-navy rounded-full flex items-center justify-center transition-colors group"
-                  >
-                    <span className="text-navy group-hover:text-gold transition-colors text-sm font-bold">
-                      X
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Map Placeholder */}
-          <div className="mt-12 rounded-corporate-lg overflow-hidden shadow-corporate-lg h-64 bg-gray-300">
-            {/* TODO: Replace with actual map integration (Google Maps / Mapbox) */}
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-navy/20 to-gold/20">
-              <div className="text-center">
-                <MapPin className="text-navy mx-auto mb-2" size={48} />
-                <p className="text-navy font-semibold">Interactive Map</p>
-                <p className="text-gray-600 text-sm">Suez Canal Region, Egypt</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Contact & Map Section */}
+      <MapContactSection />
     </div>
   );
 }
