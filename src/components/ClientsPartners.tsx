@@ -193,7 +193,7 @@ export default function ClientsPartners() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-12">
             {partnershipAreas.map((area) => (
               <div
                 key={area}
@@ -205,6 +205,7 @@ export default function ClientsPartners() {
               </div>
             ))}
           </div>
+
           {/* Why Partners Work With Us */}
           <div className="pt-10 border-t border-navy/10">
             <h4 className="text-xl sm:text-2xl font-bold text-navy text-center mb-8">
