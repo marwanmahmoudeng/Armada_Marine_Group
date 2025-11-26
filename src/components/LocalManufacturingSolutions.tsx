@@ -24,7 +24,11 @@ import {
   Layers,
 } from "lucide-react";
 import MapContactSection from "./MapContactSection";
-
+import background from "../assets/background_l.jfif";
+import main from "../assets/main_l.png";
+import one from "../assets/one_l.png";
+import two from "../assets/two_l.png";
+import three from "../assets/three_l.png";
 type ManufacturingFeature = {
   icon: any;
   title: string;
@@ -172,7 +176,7 @@ export default function LocalManufacturingSolutions() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070')",
+            backgroundImage: `url(${background})`,
           }}
         >
           {/* Dark Overlay */}
@@ -255,7 +259,7 @@ export default function LocalManufacturingSolutions() {
               {/* TODO: Replace with real image: /images/local-mfg-vision.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=2070"
+                  src={main}
                   alt="Local manufacturing facility vision"
                   className="w-full h-[500px] object-cover"
                 />
@@ -380,7 +384,7 @@ export default function LocalManufacturingSolutions() {
             {/* TODO: Replace with real images */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070"
+                src={one}
                 alt="Precision machining and components"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -396,7 +400,7 @@ export default function LocalManufacturingSolutions() {
             {/* Capability Image 2 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070"
+                src={two}
                 alt="Fabrication and assembly"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -412,7 +416,7 @@ export default function LocalManufacturingSolutions() {
             {/* Capability Image 3 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=2070"
+                src={three}
                 alt="Quality control and testing"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />

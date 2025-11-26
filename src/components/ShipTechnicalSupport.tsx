@@ -19,7 +19,11 @@ import {
   TrendingUp,
 } from "lucide-react";
 import MapContactSection from "./MapContactSection";
-
+import background from "../assets/background_ship.jfif";
+import support from "../assets/support.png";
+import diagnostics from "../assets/diagnostics.jfif";
+import documentation from "../assets/documentation.jfif";
+import repairs from "../assets/repairs.jfif";
 type SupportCategory = {
   icon: any;
   title: string;
@@ -151,7 +155,7 @@ export default function ShipTechnicalSupport() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070')",
+            backgroundImage: `url(${background})`,
           }}
         >
           {/* Gradient Overlay */}
@@ -230,7 +234,7 @@ export default function ShipTechnicalSupport() {
               {/* TODO: Replace with real image: /images/marine-engineer.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070"
+                  src={support}
                   alt="Marine engineer performing technical support"
                   className="w-full h-[500px] object-cover"
                 />
@@ -355,7 +359,7 @@ export default function ShipTechnicalSupport() {
             {/* TODO: Replace with real image: /images/tech-support-1.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=2070"
+                src={diagnostics}
                 alt="Marine engineer diagnostics"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -369,7 +373,7 @@ export default function ShipTechnicalSupport() {
             {/* TODO: Replace with real image: /images/tech-support-2.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?q=80&w=2070"
+                src={repairs}
                 alt="On-site repairs"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -383,7 +387,7 @@ export default function ShipTechnicalSupport() {
             {/* TODO: Replace with real image: /images/tech-support-3.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070"
+                src={documentation}
                 alt="Technical documentation"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />

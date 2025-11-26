@@ -19,7 +19,11 @@ import {
   TrendingUp,
 } from "lucide-react";
 import MapContactSection from "./MapContactSection";
-
+import background from "../assets/documentation.jfif";
+import equipment from "../assets/equipment.png";
+import Precision from "../assets/Precision.png";
+import Engine from "../assets/Engine.png";
+import reporting from "../assets/reporting.jfif";
 type InspectionCategory = {
   icon: any;
   title: string;
@@ -151,7 +155,7 @@ export default function EngineeringInspections() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070')",
+            backgroundImage:`url(${background})`,
           }}
         >
           {/* Gradient Overlay */}
@@ -230,7 +234,7 @@ export default function EngineeringInspections() {
               {/* TODO: Replace with real image: /images/inspection-equipment.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070"
+                  src={equipment}
                   alt="Marine engineering inspection equipment"
                   className="w-full h-[500px] object-cover"
                 />
@@ -355,7 +359,7 @@ export default function EngineeringInspections() {
             {/* TODO: Replace with real image: /images/inspection-1.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092918484-8313e1f7e8c6?q=80&w=2070"
+                src={Precision}
                 alt="Precision measurement equipment"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -369,7 +373,7 @@ export default function EngineeringInspections() {
             {/* TODO: Replace with real image: /images/inspection-2.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?q=80&w=2070"
+                src={Engine}
                 alt="Engine inspection process"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -383,7 +387,7 @@ export default function EngineeringInspections() {
             {/* TODO: Replace with real image: /images/inspection-3.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070"
+                src={reporting}
                 alt="Technical documentation and reporting"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />

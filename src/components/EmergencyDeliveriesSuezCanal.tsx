@@ -16,9 +16,14 @@ import {
   FileText,
   Gauge,
   AlertTriangle,
+  MapPin,
 } from "lucide-react";
 import MapContactSection from "./MapContactSection";
-
+import background from "../assets/suez1.png";
+import main from "../assets/suez.png";
+import one from "../assets/one_e.png";
+import two from "../assets/two_e.png";
+import three from "../assets/three_e.png";
 type EmergencyFeature = {
   icon: any;
   title: string;
@@ -157,7 +162,7 @@ export default function EmergencyDeliveriesSuezCanal() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2070')",
+            backgroundImage: `url(${background})`,
           }}
         >
           {/* Dark Overlay for readability */}
@@ -253,7 +258,7 @@ export default function EmergencyDeliveriesSuezCanal() {
               {/* TODO: Replace with real image: /images/emergency-overview.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1605737132449-c82f2fdd7200?q=80&w=2070"
+                  src={main}
                   alt="Emergency delivery operations at night"
                   className="w-full h-[500px] object-cover"
                 />
@@ -379,7 +384,7 @@ export default function EmergencyDeliveriesSuezCanal() {
             {/* Coverage Area 1 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?q=80&w=2070"
+                src={one}
                 alt="Suez Canal vessels"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -395,7 +400,7 @@ export default function EmergencyDeliveriesSuezCanal() {
             {/* Coverage Area 2 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1605737132449-c82f2fdd7200?q=80&w=2070"
+                src={two}
                 alt="Port operations"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -411,7 +416,7 @@ export default function EmergencyDeliveriesSuezCanal() {
             {/* Coverage Area 3 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1585409661859-4c45c097ffea?q=80&w=2070"
+                src={three}
                 alt="Night operations"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />

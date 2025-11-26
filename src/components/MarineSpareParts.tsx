@@ -19,7 +19,11 @@ import {
   TrendingDown,
 } from "lucide-react";
 import MapContactSection from "./MapContactSection";
-
+import partsImage from "../assets/marine_parts.png";
+import backgroundImage from "../assets/background_parts.png";
+import Packed from "../assets/Packed.jfif";
+import Warehouse from "../assets/Warehouse.jfif";
+import inspection from "../assets/inspection.jfif";
 type PartCategory = {
   icon: any;
   title: string;
@@ -151,7 +155,7 @@ export default function MarineSpareParts() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070')",
+            backgroundImage: `url(${backgroundImage})`,
           }}
         >
           {/* Gradient Overlay */}
@@ -239,7 +243,7 @@ export default function MarineSpareParts() {
               {/* TODO: Replace with real image: /images/engine-parts.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1565630916779-e303be97bc8d?q=80&w=2070"
+                  src= {partsImage}
                   alt="Marine engine spare parts"
                   className="w-full h-[500px] object-cover"
                 />
@@ -365,7 +369,7 @@ export default function MarineSpareParts() {
             {/* TODO: Replace with real image: /images/spares-1.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070"
+                src={Warehouse}
                 alt="Spare parts warehouse"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -379,7 +383,7 @@ export default function MarineSpareParts() {
             {/* TODO: Replace with real image: /images/spares-2.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092583537-20d51b4b4f1b?q=80&w=2070"
+                src={inspection}
                 alt="Technical inspection"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -393,7 +397,7 @@ export default function MarineSpareParts() {
             {/* TODO: Replace with real image: /images/spares-3.jpg */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070"
+                src={Packed}
                 alt="Packed parts ready for delivery"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />

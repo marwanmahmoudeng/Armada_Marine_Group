@@ -5,7 +5,9 @@ import {
   Shield,
   Search,
   CheckCircle2,
+  Globe2,
   Globe,
+  Mail,
   Clock,
   Users,
   TrendingUp,
@@ -21,7 +23,11 @@ import {
   Target,
 } from "lucide-react";
 import MapContactSection from "./MapContactSection";
-
+import background from "../assets/background_eq.jfif";
+import main from "../assets/main_eq.jfif";
+import one from "../assets/one_eq.png";
+import two from "../assets/two_eq.png";
+import three from "../assets/three_eq.png";
 type EquipmentFeature = {
   icon: any;
   title: string;
@@ -165,7 +171,7 @@ export default function MarineEquipmentSourcing() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=2070')",
+            backgroundImage: `url(${background})`,
           }}
         >
           {/* Dark Overlay */}
@@ -248,7 +254,7 @@ export default function MarineEquipmentSourcing() {
               {/* TODO: Replace with real image: /images/equip-overview.jpg */}
               <div className="rounded-corporate-lg overflow-hidden shadow-corporate-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070"
+                  src={main}
                   alt="Marine equipment warehouse and sourcing"
                   className="w-full h-[500px] object-cover"
                 />
@@ -373,7 +379,7 @@ export default function MarineEquipmentSourcing() {
             {/* TODO: Replace with real images */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070"
+                src={one}
                 alt="Marine machinery and engines"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -389,7 +395,7 @@ export default function MarineEquipmentSourcing() {
             {/* Equipment Image 2 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=2070"
+                src={two}
                 alt="Navigation electronics and instruments"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -405,7 +411,7 @@ export default function MarineEquipmentSourcing() {
             {/* Equipment Image 3 */}
             <div className="rounded-corporate-lg overflow-hidden shadow-corporate-lg hover:shadow-corporate-xl transition-shadow duration-300">
               <img
-                src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070"
+                src={three}
                 alt="Safety equipment and deck hardware"
                 className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500"
               />
