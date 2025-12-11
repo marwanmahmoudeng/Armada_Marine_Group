@@ -297,108 +297,74 @@ def group_ocr_boxes_by_row(ocr_result) -> List[Dict[str, Any]]:
 
 def assign_columns_to_row(row: Dict[str, Any], width: int) -> Dict[str, Any]:
     """
-    نفصل الأعمدة: Item No / Medicine / Quantity / Unit
-    بناءً على الموقع الأفقي (x_center)
+    استخراج معلومات الدواء من السطر باستخدام regex وموقع النص
 
-    التقسيمة المحسّنة للصورة (RTL - من اليمين لليسار):
-      - 0% - 10%  → رقم السطر (item number) - أقصى الشمال
-      - 10% - 55% → اسم الدواء (drug name) - كامل بدون قطع
-      - 55% - 75% → الكمية (quantity) - في النص
-      - 75% - 100%→ الوحدة (unit) - أقصى اليمين
+    بدل استخدام نسب ثابتة، نستخدم pattern matching ذكي
     """
-    item_no_text = ""
-    med_parts = []
-    qty_text = ""
-    unit_text = ""
+    line = row["line_text"].strip()
 
-    for e in row["entries"]:
-        rel_x = e["x_center"] / float(width) if width > 0 else 0
-
-        if rel_x < 0.10:
-            item_no_text += " " + e["text"]
-        elif rel_x < 0.55:
-            # اسم الدواء - خد كل حاجة بدون قطع
-            med_parts.append(e["text"])
-        elif rel_x < 0.75:
-            qty_text += " " + e["text"]
-        else:
-            unit_text += " " + e["text"]
-
-    item_no_text = item_no_text.strip()
-    med_text = " ".join(med_parts).strip()
-    qty_text = qty_text.strip()
-    unit_text = unit_text.strip()
-
-    # استخراج رقم السطر
+    # استخراج رقم السطر من أول السطر
     item_no = None
-    # لو فيه رقم في العمود المخصص
-    if item_no_text:
-        m = re.search(r"(\d+)", item_no_text)
-        if m:
-            try:
-                item_no = int(m.group(1))
-            except:
-                pass
+    m = re.match(r"^\s*(\d+)\s+", line)
+    if m:
+        try:
+            item_no = int(m.group(1))
+            # امسح رقم السطر من السطر
+            line = line[m.end():].strip()
+        except:
+            pass
 
-    # لو مفيش، جرب من أول السطر
-    if item_no is None:
-        m = re.match(r"^\s*(\d+)\s+", row["line_text"])
-        if m:
-            try:
-                item_no = int(m.group(1))
-            except:
-                pass
-
-    # استخراج الكمية من عمود الكمية فقط
+    # استخراج الكمية والوحدة من آخر السطر
+    # Pattern: {اسم الدواء} {كمية} {وحدة}
+    # مثال: PLAVIX 75 MG TABLET 2 STRIP
     quantity = None
-    if qty_text:
-        # خد كل الأرقام من النص
-        q_nums = re.findall(r"(\d+)", qty_text)
-        if q_nums:
-            # لو فيه أكتر من رقم، خد الأول (عادة هو الكمية)
-            try:
-                quantity = int(q_nums[0])
-            except:
-                pass
-
-    # استخراج الوحدة - أولوية خاصة لـ STRIP
     unit = None
+    drug_name = line
 
-    # أولاً: دور على STRIP في عمود الوحدة (أولوية قصوى)
-    if unit_text and re.search(r"\bSTRIP", unit_text, flags=re.IGNORECASE):
+    # أولاً: دور على STRIP في آخر السطر
+    strip_match = re.search(r"\s+(\d+)\s+(STRIP)S?\s*$", line, flags=re.IGNORECASE)
+    if strip_match:
+        quantity = int(strip_match.group(1))
         unit = "STRIP"
-
-    # ثانياً: لو مفيش STRIP، دور على أي وحدة تانية في عمود الوحدة
-    if not unit and unit_text:
+        # امسح الكمية والوحدة من اسم الدواء
+        drug_name = line[:strip_match.start()].strip()
+    else:
+        # دور على أي وحدة تانية
         for u in UNITS:
-            if re.search(rf"\b{u}\b", unit_text, flags=re.IGNORECASE):
-                unit = u.upper()
+            pattern = rf"\s+(\d+)\s+({u})S?\s*$"
+            match = re.search(pattern, line, flags=re.IGNORECASE)
+            if match:
+                quantity = int(match.group(1))
+                unit = match.group(2).upper()
+                drug_name = line[:match.start()].strip()
                 break
 
-    # ثالثاً: لو مفيش في عمود الوحدة، دور على STRIP في السطر كله
-    if not unit and re.search(r"\bSTRIP", row["line_text"], flags=re.IGNORECASE):
-        unit = "STRIP"
+    # لو مفيش كمية ووحدة في آخر السطر، دور في السطر كله
+    if quantity is None or unit is None:
+        # دور على STRIP في أي مكان
+        if re.search(r"\bSTRIP", line, flags=re.IGNORECASE):
+            unit = "STRIP"
+            # حاول تستخرج الكمية قبل STRIP
+            qty_match = re.search(r"(\d+)\s+STRIP", line, flags=re.IGNORECASE)
+            if qty_match:
+                quantity = int(qty_match.group(1))
+                # امسح الكمية والوحدة
+                drug_name = re.sub(r"\s*\d+\s+STRIP\s*", "", line, flags=re.IGNORECASE).strip()
+        else:
+            # دور على أي وحدة
+            for u in UNITS:
+                if re.search(rf"\b{u}\b", line, flags=re.IGNORECASE):
+                    unit = u.upper()
+                    # حاول تستخرج الكمية قبل الوحدة
+                    qty_match = re.search(rf"(\d+)\s+{u}", line, flags=re.IGNORECASE)
+                    if qty_match:
+                        quantity = int(qty_match.group(1))
+                        # امسح الكمية والوحدة
+                        drug_name = re.sub(rf"\s*\d+\s+{u}\s*", "", line, flags=re.IGNORECASE).strip()
+                    break
 
-    # رابعاً: لو مفيش STRIP، خد آخر وحدة في السطر (الأقرب لليمين)
-    if not unit:
-        for u in UNITS:
-            matches = list(re.finditer(rf"\b{u}\b", row["line_text"], flags=re.IGNORECASE))
-            if matches:
-                # خد آخر match (الأقرب لليمين في النص)
-                unit = matches[-1].group(0).upper()
-                break
-
-    # اسم الدواء: خد النص من عمود الدواء كما هو
-    drug_name = med_text
-
-    # لو اسم الدواء فاضي، خد من السطر كله
-    if not drug_name:
-        drug_name = re.sub(r"^\s*\d+\s+", "", row["line_text"]).strip()
-        # امسح الكمية والوحدة من الآخر لو موجودة
-        if quantity and unit:
-            drug_name = re.sub(rf"\s+{quantity}\s+{unit}\s*$", "", drug_name, flags=re.IGNORECASE).strip()
-        elif unit:
-            drug_name = re.sub(rf"\s+{unit}\s*$", "", drug_name, flags=re.IGNORECASE).strip()
+    # تنظيف اسم الدواء من أي أرقام أو وحدات زيادة
+    drug_name = drug_name.strip()
 
     return {
         "item_no": item_no,
@@ -510,12 +476,25 @@ def process_single_image(ocr_en: PaddleOCR, ocr_ar: PaddleOCR, image_path: str) 
             continue
 
         # فلتر 4: استبعاد النصوص الغريبة (حروف عشوائية، RTL marks)
-        # لو معظم الكلمات قصيرة جداً (أقل من 3 حروف)، غالباً نص مقلوب أو غريب
+        # لو معظم الكلمات قصيرة جداً أو فيها حروف صغيرة/كبيرة عشوائية
         words = re.findall(r"[A-Za-z]+", row["line_text"])
         if words:
-            long_words = [w for w in words if len(w) >= 3]
+            # لازم يكون فيه على الأقل كلمة واحدة طويلة (5+ حروف)
+            long_words = [w for w in words if len(w) >= 5]
             if len(long_words) == 0:
                 print(f"   Row {idx+1}: [SKIP - WEIRD TEXT] {row['line_text'][:50]}")
+                continue
+
+            # لو فيه كلمات كتير بحروف صغيرة/كبيرة متناوبة (مثل: iu, di, yo)، ده نص غريب
+            weird_pattern_count = 0
+            for w in words:
+                # كلمة قصيرة (2-3 حروف) بحروف صغيرة/كبيرة عشوائية
+                if len(w) <= 3 and re.search(r"[a-z][A-Z]|[A-Z][a-z][A-Z]", w):
+                    weird_pattern_count += 1
+
+            # لو أكتر من 30% من الكلمات غريبة
+            if len(words) > 0 and weird_pattern_count / len(words) > 0.3:
+                print(f"   Row {idx+1}: [SKIP - MIXED CASE GIBBERISH] {row['line_text'][:50]}")
                 continue
 
         # فلتر 5: استبعاد السطور اللي فيها نصوص عربية غريبة (RTL marks, etc)
@@ -533,13 +512,13 @@ def process_single_image(ocr_en: PaddleOCR, ocr_ar: PaddleOCR, image_path: str) 
             print(f"   Row {idx+1}: [SKIP - INVALID ITEM NO: {cols['item_no']}] {row['line_text'][:50]}")
             continue
 
-        # فلتر 7: لازم يكون فيه اسم دواء واضح (على الأقل 5 حروف)
-        if not cols["drug_name"] or len(cols["drug_name"]) < 5:
+        # فلتر 7: لازم يكون فيه اسم دواء واضح (على الأقل 4 حروف)
+        if not cols["drug_name"] or len(cols["drug_name"]) < 4:
             print(f"   Row {idx+1}: [SKIP - NO DRUG NAME] {row['line_text'][:50]}")
             continue
 
-        # فلتر 8: اسم الدواء لازم يكون فيه حروف إنجليزية واضحة
-        if not re.search(r"[A-Za-z]{3,}", cols["drug_name"]):
+        # فلتر 8: اسم الدواء لازم يكون فيه حروف إنجليزية واضحة (على الأقل 4 حروف)
+        if not re.search(r"[A-Za-z]{4,}", cols["drug_name"]):
             print(f"   Row {idx+1}: [SKIP - DRUG NAME NOT ENGLISH] {cols['drug_name']}")
             continue
 
@@ -548,9 +527,15 @@ def process_single_image(ocr_en: PaddleOCR, ocr_ar: PaddleOCR, image_path: str) 
             print(f"   Row {idx+1}: [SKIP - NOT A DRUG NAME] {cols['drug_name']}")
             continue
 
-        # فلتر 10: اسم الدواء لازم يبدأ بحرف (مش رقم أو رمز غريب)
-        if not re.match(r"^[A-Za-z]", cols["drug_name"]):
+        # فلتر 10: اسم الدواء لازم يبدأ بحرف (مش رمز غريب زي : أو .)
+        # لكن ممكن يبدأ برقم لو الكود مشالوش صح
+        if re.match(r"^[^A-Za-z0-9]", cols["drug_name"]):
             print(f"   Row {idx+1}: [SKIP - INVALID START] {cols['drug_name']}")
+            continue
+
+        # فلتر 11: اسم الدواء مينفعش يبقى كله أرقام
+        if re.match(r"^\d+$", cols["drug_name"]):
+            print(f"   Row {idx+1}: [SKIP - ONLY NUMBERS] {cols['drug_name']}")
             continue
 
         print(f"   Row {idx+1}: [MEDICINE] {cols['drug_name'][:30]} | Qty: {cols['quantity']} | Unit: {cols['unit']}")
