@@ -497,12 +497,28 @@ def process_single_image(ocr_en: PaddleOCR, ocr_ar: PaddleOCR, image_path: str) 
             print(f"   Row {idx+1}: [SKIP - DATE] {row['line_text'][:50]}")
             continue
 
-        # فلتر 2: لازم يكون فيه حروف إنجليزية (أسماء الأدوية كلها إنجليزي)
-        if not re.search(r"[A-Za-z]{3,}", row["line_text"]):
-            print(f"   Row {idx+1}: [SKIP - NO ENGLISH] {row['line_text'][:50]}")
+        # فلتر 2: استبعاد سطور الوحدة لوحدها (مثل: "3 STRIP" أو "6 STRIP")
+        # السطر لو كان رقم + STRIP فقط، ده مش دواء
+        if re.match(r"^\s*\d+\s+(STRIP|TAB|TABLET|CAP|VIAL|AMP)\s*$", row["line_text"], flags=re.IGNORECASE):
+            print(f"   Row {idx+1}: [SKIP - UNIT ONLY] {row['line_text'][:50]}")
             continue
 
-        # فلتر 3: استبعاد السطور اللي فيها نصوص عربية غريبة (RTL marks, etc)
+        # فلتر 3: لازم يكون فيه حروف إنجليزية واضحة (أسماء الأدوية كلها إنجليزي)
+        # على الأقل 5 حروف إنجليزية متتالية
+        if not re.search(r"[A-Za-z]{5,}", row["line_text"]):
+            print(f"   Row {idx+1}: [SKIP - NO CLEAR ENGLISH] {row['line_text'][:50]}")
+            continue
+
+        # فلتر 4: استبعاد النصوص الغريبة (حروف عشوائية، RTL marks)
+        # لو معظم الكلمات قصيرة جداً (أقل من 3 حروف)، غالباً نص مقلوب أو غريب
+        words = re.findall(r"[A-Za-z]+", row["line_text"])
+        if words:
+            long_words = [w for w in words if len(w) >= 3]
+            if len(long_words) == 0:
+                print(f"   Row {idx+1}: [SKIP - WEIRD TEXT] {row['line_text'][:50]}")
+                continue
+
+        # فلتر 5: استبعاد السطور اللي فيها نصوص عربية غريبة (RTL marks, etc)
         # لو فيه نصوص عربية كتير بدون إنجليزي واضح
         arabic_chars = len(re.findall(r"[أ-ي]", row["line_text"]))
         english_chars = len(re.findall(r"[A-Za-z]", row["line_text"]))
@@ -512,19 +528,29 @@ def process_single_image(ocr_en: PaddleOCR, ocr_ar: PaddleOCR, image_path: str) 
 
         cols = assign_columns_to_row(row, width=th_w + 2 * pad)
 
-        # فلتر 4: لازم يكون فيه item number من 1-10 (عدد معقول للأدوية)
+        # فلتر 6: لازم يكون فيه item number من 1-10 (عدد معقول للأدوية)
         if cols["item_no"] is None or cols["item_no"] < 1 or cols["item_no"] > 10:
             print(f"   Row {idx+1}: [SKIP - INVALID ITEM NO: {cols['item_no']}] {row['line_text'][:50]}")
             continue
 
-        # فلتر 5: لازم يكون فيه اسم دواء واضح (على الأقل 3 حروف)
-        if not cols["drug_name"] or len(cols["drug_name"]) < 3:
+        # فلتر 7: لازم يكون فيه اسم دواء واضح (على الأقل 5 حروف)
+        if not cols["drug_name"] or len(cols["drug_name"]) < 5:
             print(f"   Row {idx+1}: [SKIP - NO DRUG NAME] {row['line_text'][:50]}")
             continue
 
-        # فلتر 6: اسم الدواء لازم يكون فيه حروف إنجليزية
-        if not re.search(r"[A-Za-z]{2,}", cols["drug_name"]):
+        # فلتر 8: اسم الدواء لازم يكون فيه حروف إنجليزية واضحة
+        if not re.search(r"[A-Za-z]{3,}", cols["drug_name"]):
             print(f"   Row {idx+1}: [SKIP - DRUG NAME NOT ENGLISH] {cols['drug_name']}")
+            continue
+
+        # فلتر 9: اسم الدواء ما يبقاش مجرد رقم + وحدة
+        if re.match(r"^\s*\d+\s+(STRIP|TAB|TABLET|CAP|VIAL|AMP)\s*$", cols["drug_name"], flags=re.IGNORECASE):
+            print(f"   Row {idx+1}: [SKIP - NOT A DRUG NAME] {cols['drug_name']}")
+            continue
+
+        # فلتر 10: اسم الدواء لازم يبدأ بحرف (مش رقم أو رمز غريب)
+        if not re.match(r"^[A-Za-z]", cols["drug_name"]):
+            print(f"   Row {idx+1}: [SKIP - INVALID START] {cols['drug_name']}")
             continue
 
         print(f"   Row {idx+1}: [MEDICINE] {cols['drug_name'][:30]} | Qty: {cols['quantity']} | Unit: {cols['unit']}")
